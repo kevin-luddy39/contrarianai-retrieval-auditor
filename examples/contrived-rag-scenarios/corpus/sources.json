@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Wikipedia: Photosynthesis",
+    "url": "https://en.wikipedia.org/wiki/Photosynthesis",
+    "license": "CC BY-SA 4.0",
+    "paragraphs": 80
+  },
+  {
+    "name": "OpenStax Biology 2e Ch. 8",
+    "url": "https://openstax.org/books/biology-2e/pages/",
+    "license": "CC BY 4.0",
+    "paragraphs": 47
+  },
+  {
+    "name": "Project Gutenberg: pg58207.txt",
+    "url": "https://www.gutenberg.org/cache/epub/58207/pg58207.txt",
+    "license": "public domain",
+    "paragraphs": 1
+  }
+]

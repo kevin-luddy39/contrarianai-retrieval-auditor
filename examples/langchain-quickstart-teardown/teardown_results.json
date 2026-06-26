@@ -1,0 +1,1066 @@
+{
+  "queries": [
+    {
+      "query": "What is Chain of Thought prompting?",
+      "retrieved": [
+        {
+          "id": "chunk_5",
+          "text": "recting previous mistakes. It plays a crucial role in real-world tasks where trial and error are inevitable. ReAct ( Yao et al. 2023 ) integrates reasoning and acting within LLM by extending the action space to be a combination of task-specific discrete actions and the language space. The former enables LLM to interact with the environment (e.g. use Wikipedia search API), while the latter prompting LLM to generate reasoning traces in natural language. The ReAct prompt template incorporates explicit steps for LLM to think, roughly formatted as: Thought: ... Action: ... Observation: ... ... (Repeated many times) Examples of reasoning trajectories for knowledge-intensive tasks (e.g. HotpotQA, FEVER) and decision-making tasks (e.g. AlfWorld Env, WebShop). (Image source: Yao et al. 2023 ). In both experiments on knowledge-intensive tasks and decision-making tasks, ReAct works better than the Act -only baseline where Thought: \u2026 step is removed. Reflexion ( Shinn & Labash 2023 ) is a framewor",
+          "score": 0.45995914936065674
+        },
+        {
+          "id": "chunk_32",
+          "text": "n , an event directly provided by the agent. - Inter-agent communication can trigger new natural language statements. Retrieval model: surfaces the context to inform the agent\u2019s behavior, according to relevance, recency and importance. Recency: recent events have higher scores Importance: distinguish mundane from core memories. Ask LM directly. Relevance: based on how related it is to the current situation / query. Reflection mechanism: synthesizes memories into higher level inferences over time and guides the agent\u2019s future behavior. They are higher-level summaries of past events (<- note that this is a bit different from self-reflection above) Prompt LM with 100 most recent observations and to generate 3 most salient high-level questions given a set of observations/statements. Then ask LM to answer those questions. Planning & Reacting : translate the reflections and the environment information into actions Planning is essentially in order to optimize believability at the moment vs in",
+          "score": 0.446150004863739
+        },
+        {
+          "id": "chunk_2",
+          "text": " and fast retrieval. Tool use The agent learns to call external APIs for extra information that is missing from the model weights (often hard to change after pre-training), including current information, code execution capability, access to proprietary information sources and more. Overview of a LLM-powered autonomous agent system. Component One: Planning # A complicated task usually involves many steps. An agent needs to know what they are and plan ahead. Task Decomposition # Chain of thought (CoT; Wei et al. 2022 ) has become a standard prompting technique for enhancing model performance on complex tasks. The model is instructed to \u201cthink step by step\u201d to utilize more test-time computation to decompose hard tasks into smaller and simpler steps. CoT transforms big tasks into multiple manageable tasks and shed lights into an interpretation of the model\u2019s thinking process. Tree of Thoughts ( Yao et al. 2023 ) extends CoT by exploring multiple reasoning possibilities at each step. It fir",
+          "score": 0.43276357650756836
+        },
+        {
+          "id": "chunk_3",
+          "text": "geable tasks and shed lights into an interpretation of the model\u2019s thinking process. Tree of Thoughts ( Yao et al. 2023 ) extends CoT by exploring multiple reasoning possibilities at each step. It first decomposes the problem into multiple thought steps and generates multiple thoughts per step, creating a tree structure. The search process can be BFS (breadth-first search) or DFS (depth-first search) with each state evaluated by a classifier (via a prompt) or majority vote. Task decomposition can be done (1) by LLM with simple prompting like \"Steps for XYZ.\\n1.\" , \"What are the subgoals for achieving XYZ?\" , (2) by using task-specific instructions; e.g. \"Write a story outline.\" for writing a novel, or (3) with human inputs. Another quite distinct approach, LLM+P ( Liu et al. 2023 ), involves relying on an external classical planner to do long-horizon planning. This approach utilizes the Planning Domain Definition Language (PDDL) as an intermediate interface to describe the planning pro",
+          "score": 0.4316009283065796
+        },
+        {
+          "id": "chunk_7",
+          "text": "euristic function determines when the trajectory is inefficient or contains hallucination and should be stopped. Inefficient planning refers to trajectories that take too long without success. Hallucination is defined as encountering a sequence of consecutive identical actions that lead to the same observation in the environment. Self-reflection is created by showing two-shot examples to LLM and each example is a pair of (failed trajectory, ideal reflection for guiding future changes in the plan). Then reflections are added into the agent\u2019s working memory, up to three, to be used as context for querying LLM. Experiments on AlfWorld Env and HotpotQA. Hallucination is a more common failure than inefficient planning in AlfWorld. (Image source: Shinn & Labash, 2023 ) Chain of Hindsight (CoH; Liu et al. 2023 ) encourages the model to improve on its own outputs by explicitly presenting it with a sequence of past outputs, each annotated with feedback. Human feedback data is a collection of $D",
+          "score": 0.38443827629089355
+        }
+      ]
+    },
+    {
+      "query": "How does ReAct differ from Reflexion?",
+      "retrieved": [
+        {
+          "id": "chunk_6",
+          "text": "oth experiments on knowledge-intensive tasks and decision-making tasks, ReAct works better than the Act -only baseline where Thought: \u2026 step is removed. Reflexion ( Shinn & Labash 2023 ) is a framework to equip agents with dynamic memory and self-reflection capabilities to improve reasoning skills. Reflexion has a standard RL setup, in which the reward model provides a simple binary reward and the action space follows the setup in ReAct where the task-specific action space is augmented with language to enable complex reasoning steps. After each action $a_t$, the agent computes a heuristic $h_t$ and optionally may decide to reset the environment to start a new trial depending on the self-reflection results. Illustration of the Reflexion framework. (Image source: Shinn & Labash, 2023 ) The heuristic function determines when the trajectory is inefficient or contains hallucination and should be stopped. Inefficient planning refers to trajectories that take too long without success. Halluci",
+          "score": 0.4372844696044922
+        },
+        {
+          "id": "chunk_5",
+          "text": "recting previous mistakes. It plays a crucial role in real-world tasks where trial and error are inevitable. ReAct ( Yao et al. 2023 ) integrates reasoning and acting within LLM by extending the action space to be a combination of task-specific discrete actions and the language space. The former enables LLM to interact with the environment (e.g. use Wikipedia search API), while the latter prompting LLM to generate reasoning traces in natural language. The ReAct prompt template incorporates explicit steps for LLM to think, roughly formatted as: Thought: ... Action: ... Observation: ... ... (Repeated many times) Examples of reasoning trajectories for knowledge-intensive tasks (e.g. HotpotQA, FEVER) and decision-making tasks (e.g. AlfWorld Env, WebShop). (Image source: Yao et al. 2023 ). In both experiments on knowledge-intensive tasks and decision-making tasks, ReAct works better than the Act -only baseline where Thought: \u2026 step is removed. Reflexion ( Shinn & Labash 2023 ) is a framewor",
+          "score": 0.3826467990875244
+        },
+        {
+          "id": "chunk_33",
+          "text": "M to answer those questions. Planning & Reacting : translate the reflections and the environment information into actions Planning is essentially in order to optimize believability at the moment vs in time. Prompt template: {Intro of an agent X}. Here is X's plan today in broad strokes: 1) Relationships between agents and observations of one agent by another are all taken into consideration for planning and reacting. Environment information is present in a tree structure. The generative agent architecture. (Image source: Park et al. 2023 ) This fun simulation results in emergent social behavior, such as information diffusion, relationship memory (e.g. two agents continuing the conversation topic) and coordination of social events (e.g. host a party and invite many others). Proof-of-Concept Examples # AutoGPT has drawn a lot of attention into the possibility of setting up autonomous agents with LLM as the main controller. It has quite a lot of reliability issues given the natural langua",
+          "score": 0.29612189531326294
+        },
+        {
+          "id": "chunk_32",
+          "text": "n , an event directly provided by the agent. - Inter-agent communication can trigger new natural language statements. Retrieval model: surfaces the context to inform the agent\u2019s behavior, according to relevance, recency and importance. Recency: recent events have higher scores Importance: distinguish mundane from core memories. Ask LM directly. Relevance: based on how related it is to the current situation / query. Reflection mechanism: synthesizes memories into higher level inferences over time and guides the agent\u2019s future behavior. They are higher-level summaries of past events (<- note that this is a bit different from self-reflection above) Prompt LM with 100 most recent observations and to generate 3 most salient high-level questions given a set of observations/statements. Then ask LM to answer those questions. Planning & Reacting : translate the reflections and the environment information into actions Planning is essentially in order to optimize believability at the moment vs in",
+          "score": 0.24397122859954834
+        },
+        {
+          "id": "chunk_12",
+          "text": "learning history), source policy (used for generating trajectories for distillation by UCB ), RL^2 ( Duan et al. 2017 ; used as upper bound since it needs online RL), AD demonstrates in-context RL with performance getting close to RL^2 despite only using offline RL and learns much faster than other baselines. When conditioned on partial training history of the source policy, AD also improves much faster than ED baseline. Comparison of AD, ED, source policy and RL^2 on environments that require memory and exploration. Only binary reward is assigned. The source policies are trained with A3C for \"dark\" environments and DQN for watermaze. (Image source: Laskin et al. 2023 ) Component Two: Memory # (Big thank you to ChatGPT for helping me draft this section. I\u2019ve learned a lot about the human brain and data structure for fast MIPS in my conversations with ChatGPT.) Types of Memory # Memory can be defined as the processes used to acquire, store, retain, and later retrieve information. There ",
+          "score": 0.18087303638458252
+        }
+      ]
+    },
+    {
+      "query": "What memory mechanisms do LLM agents use?",
+      "retrieved": [
+        {
+          "id": "chunk_1",
+          "text": "view # In a LLM-powered autonomous agent system, LLM functions as the agent\u2019s brain, complemented by several key components: Planning Subgoal and decomposition: The agent breaks down large tasks into smaller, manageable subgoals, enabling efficient handling of complex tasks. Reflection and refinement: The agent can do self-criticism and self-reflection over past actions, learn from mistakes and refine them for future steps, thereby improving the quality of final results. Memory Short-term memory: I would consider all the in-context learning (See Prompt Engineering ) as utilizing short-term memory of the model to learn. Long-term memory: This provides the agent with the capability to retain and recall (infinite) information over extended periods, often by leveraging an external vector store and fast retrieval. Tool use The agent learns to call external APIs for extra information that is missing from the model weights (often hard to change after pre-training), including current informati",
+          "score": 0.6252346634864807
+        },
+        {
+          "id": "chunk_0",
+          "text": "LLM Powered Autonomous Agents Date: June 23, 2023 | Estimated Reading Time: 31 min | Author: Lilian Weng Table of Contents Agent System Overview Component One: Planning Task Decomposition Self-Reflection Component Two: Memory Types of Memory Maximum Inner Product Search (MIPS) Component Three: Tool Use Case Studies Scientific Discovery Agent Generative Agents Simulation Proof-of-Concept Examples Challenges Citation References Building agents with LLM (large language model) as its core controller is a cool concept. Several proof-of-concepts demos, such as AutoGPT , GPT-Engineer and BabyAGI , serve as inspiring examples. The potentiality of LLM extends beyond generating well-written copies, stories, essays and programs; it can be framed as a powerful general problem solver. Agent System Overview # In a LLM-powered autonomous agent system, LLM functions as the agent\u2019s brain, complemented by several key components: Planning Subgoal and decomposition: The agent breaks down large tasks into ",
+          "score": 0.5576973557472229
+        },
+        {
+          "id": "chunk_31",
+          "text": "mong these 7 rejected cases, 5 happened after a Web search while 2 were rejected based on prompt only. Generative Agents Simulation # Generative Agents ( Park, et al. 2023 ) is super fun experiment where 25 virtual characters, each controlled by a LLM-powered agent, are living and interacting in a sandbox environment, inspired by The Sims. Generative agents create believable simulacra of human behavior for interactive applications. The design of generative agents combines LLM with memory, planning and reflection mechanisms to enable agents to behave conditioned on past experience, as well as to interact with other agents. Memory stream: is a long-term memory module (external database) that records a comprehensive list of agents\u2019 experience in natural language. Each element is an observation , an event directly provided by the agent. - Inter-agent communication can trigger new natural language statements. Retrieval model: surfaces the context to inform the agent\u2019s behavior, according to",
+          "score": 0.5546133518218994
+        },
+        {
+          "id": "chunk_14",
+          "text": "have the capacity of about 7 items ( Miller 1956 ) and lasts for 20-30 seconds. Long-Term Memory (LTM): Long-term memory can store information for a remarkably long time, ranging from a few days to decades, with an essentially unlimited storage capacity. There are two subtypes of LTM: Explicit / declarative memory: This is memory of facts and events, and refers to those memories that can be consciously recalled, including episodic memory (events and experiences) and semantic memory (facts and concepts). Implicit / procedural memory: This type of memory is unconscious and involves skills and routines that are performed automatically, like riding a bike or typing on a keyboard. Categorization of human memory. We can roughly consider the following mappings: Sensory memory as learning embedding representations for raw inputs, including text, image or other modalities; Short-term memory as in-context learning. It is short and finite, as it is restricted by the finite context window length o",
+          "score": 0.5131088495254517
+        },
+        {
+          "id": "chunk_12",
+          "text": "learning history), source policy (used for generating trajectories for distillation by UCB ), RL^2 ( Duan et al. 2017 ; used as upper bound since it needs online RL), AD demonstrates in-context RL with performance getting close to RL^2 despite only using offline RL and learns much faster than other baselines. When conditioned on partial training history of the source policy, AD also improves much faster than ED baseline. Comparison of AD, ED, source policy and RL^2 on environments that require memory and exploration. Only binary reward is assigned. The source policies are trained with A3C for \"dark\" environments and DQN for watermaze. (Image source: Laskin et al. 2023 ) Component Two: Memory # (Big thank you to ChatGPT for helping me draft this section. I\u2019ve learned a lot about the human brain and data structure for fast MIPS in my conversations with ChatGPT.) Types of Memory # Memory can be defined as the processes used to acquire, store, retain, and later retrieve information. There ",
+          "score": 0.49674439430236816
+        }
+      ]
+    },
+    {
+      "query": "When does an agent decide to use a tool vs respond directly?",
+      "retrieved": [
+        {
+          "id": "chunk_27",
+          "text": "API to call: if not good enough, LLMs need to iteratively modify the API inputs (e.g. deciding search keywords for Search Engine API). Response based on the API results: the model can choose to refine and call again if results are not satisfied. This benchmark evaluates the agent\u2019s tool use capabilities at three levels: Level-1 evaluates the ability to call the API . Given an API\u2019s description, the model needs to determine whether to call a given API, call it correctly, and respond properly to API returns. Level-2 examines the ability to retrieve the API . The model needs to search for possible APIs that may solve the user\u2019s requirement and learn how to use them by reading documentation. Level-3 assesses the ability to plan API beyond retrieve and call . Given unclear user requests (e.g. schedule group meetings, book flight/hotel/restaurant for a trip), the model may have to conduct multiple API calls to solve it. Case Studies # Scientific Discovery Agent # ChemCrow ( Bran et al. 2023 ",
+          "score": 0.48172664642333984
+        },
+        {
+          "id": "chunk_50",
+          "text": "arn from trial and error. Reliability of natural language interface : Current agent system relies on natural language as an interface between LLMs and external components such as memory and tools. However, the reliability of model outputs is questionable, as LLMs may make formatting errors and occasionally exhibit rebellious behavior (e.g. refuse to follow an instruction). Consequently, much of the agent demo code focuses on parsing model output. Citation # Cited as: Weng, Lilian. (Jun 2023). \u201cLLM-powered Autonomous Agents\u201d. Lil\u2019Log. https://lilianweng.github.io/posts/2023-06-23-agent/. Or @article{weng2023agent, title = \"LLM-powered Autonomous Agents\", author = \"Weng, Lilian\", journal = \"lilianweng.github.io\", year = \"2023\", month = \"Jun\", url = \"https://lilianweng.github.io/posts/2023-06-23-agent/\" } References # [1] Wei et al. \u201cChain of thought prompting elicits reasoning in large language models.\u201d NeurIPS 2022 [2] Yao et al. \u201cTree of Thoughts: Dliberate Problem Solving with Large L",
+          "score": 0.4691354036331177
+        },
+        {
+          "id": "chunk_32",
+          "text": "n , an event directly provided by the agent. - Inter-agent communication can trigger new natural language statements. Retrieval model: surfaces the context to inform the agent\u2019s behavior, according to relevance, recency and importance. Recency: recent events have higher scores Importance: distinguish mundane from core memories. Ask LM directly. Relevance: based on how related it is to the current situation / query. Reflection mechanism: synthesizes memories into higher level inferences over time and guides the agent\u2019s future behavior. They are higher-level summaries of past events (<- note that this is a bit different from self-reflection above) Prompt LM with 100 most recent observations and to generate 3 most salient high-level questions given a set of observations/statements. Then ask LM to answer those questions. Planning & Reacting : translate the reflections and the environment information into actions Planning is essentially in order to optimize believability at the moment vs in",
+          "score": 0.4479988217353821
+        },
+        {
+          "id": "chunk_33",
+          "text": "M to answer those questions. Planning & Reacting : translate the reflections and the environment information into actions Planning is essentially in order to optimize believability at the moment vs in time. Prompt template: {Intro of an agent X}. Here is X's plan today in broad strokes: 1) Relationships between agents and observations of one agent by another are all taken into consideration for planning and reacting. Environment information is present in a tree structure. The generative agent architecture. (Image source: Park et al. 2023 ) This fun simulation results in emergent social behavior, such as information diffusion, relationship memory (e.g. two agents continuing the conversation topic) and coordination of social events (e.g. host a party and invite many others). Proof-of-Concept Examples # AutoGPT has drawn a lot of attention into the possibility of setting up autonomous agents with LLM as the main controller. It has quite a lot of reliability issues given the natural langua",
+          "score": 0.42339473962783813
+        },
+        {
+          "id": "chunk_30",
+          "text": "wse the Internet, read documentation, execute code, call robotics experimentation APIs and leverage other LLMs. For example, when requested to \"develop a novel anticancer drug\" , the model came up with the following reasoning steps: inquired about current trends in anticancer drug discovery; selected a target; requested a scaffold targeting these compounds; Once the compound was identified, the model attempted its synthesis. They also discussed the risks, especially with illicit drugs and bioweapons. They developed a test set containing a list of known chemical weapon agents and asked the agent to synthesize them. 4 out of 11 requests (36%) were accepted to obtain a synthesis solution and the agent attempted to consult documentation to execute the procedure. 7 out of 11 were rejected and among these 7 rejected cases, 5 happened after a Web search while 2 were rejected based on prompt only. Generative Agents Simulation # Generative Agents ( Park, et al. 2023 ) is super fun experiment wh",
+          "score": 0.41497522592544556
+        }
+      ]
+    },
+    {
+      "query": "Show me the planning loop for a long-horizon task",
+      "retrieved": [
+        {
+          "id": "chunk_3",
+          "text": "geable tasks and shed lights into an interpretation of the model\u2019s thinking process. Tree of Thoughts ( Yao et al. 2023 ) extends CoT by exploring multiple reasoning possibilities at each step. It first decomposes the problem into multiple thought steps and generates multiple thoughts per step, creating a tree structure. The search process can be BFS (breadth-first search) or DFS (depth-first search) with each state evaluated by a classifier (via a prompt) or majority vote. Task decomposition can be done (1) by LLM with simple prompting like \"Steps for XYZ.\\n1.\" , \"What are the subgoals for achieving XYZ?\" , (2) by using task-specific instructions; e.g. \"Write a story outline.\" for writing a novel, or (3) with human inputs. Another quite distinct approach, LLM+P ( Liu et al. 2023 ), involves relying on an external classical planner to do long-horizon planning. This approach utilizes the Planning Domain Definition Language (PDDL) as an intermediate interface to describe the planning pro",
+          "score": 0.5494393110275269
+        },
+        {
+          "id": "chunk_7",
+          "text": "euristic function determines when the trajectory is inefficient or contains hallucination and should be stopped. Inefficient planning refers to trajectories that take too long without success. Hallucination is defined as encountering a sequence of consecutive identical actions that lead to the same observation in the environment. Self-reflection is created by showing two-shot examples to LLM and each example is a pair of (failed trajectory, ideal reflection for guiding future changes in the plan). Then reflections are added into the agent\u2019s working memory, up to three, to be used as context for querying LLM. Experiments on AlfWorld Env and HotpotQA. Hallucination is a more common failure than inefficient planning in AlfWorld. (Image source: Shinn & Labash, 2023 ) Chain of Hindsight (CoH; Liu et al. 2023 ) encourages the model to improve on its own outputs by explicitly presenting it with a sequence of past outputs, each annotated with feedback. Human feedback data is a collection of $D",
+          "score": 0.4407770037651062
+        },
+        {
+          "id": "chunk_2",
+          "text": " and fast retrieval. Tool use The agent learns to call external APIs for extra information that is missing from the model weights (often hard to change after pre-training), including current information, code execution capability, access to proprietary information sources and more. Overview of a LLM-powered autonomous agent system. Component One: Planning # A complicated task usually involves many steps. An agent needs to know what they are and plan ahead. Task Decomposition # Chain of thought (CoT; Wei et al. 2022 ) has become a standard prompting technique for enhancing model performance on complex tasks. The model is instructed to \u201cthink step by step\u201d to utilize more test-time computation to decompose hard tasks into smaller and simpler steps. CoT transforms big tasks into multiple manageable tasks and shed lights into an interpretation of the model\u2019s thinking process. Tree of Thoughts ( Yao et al. 2023 ) extends CoT by exploring multiple reasoning possibilities at each step. It fir",
+          "score": 0.44066309928894043
+        },
+        {
+          "id": "chunk_4",
+          "text": "es relying on an external classical planner to do long-horizon planning. This approach utilizes the Planning Domain Definition Language (PDDL) as an intermediate interface to describe the planning problem. In this process, LLM (1) translates the problem into \u201cProblem PDDL\u201d, then (2) requests a classical planner to generate a PDDL plan based on an existing \u201cDomain PDDL\u201d, and finally (3) translates the PDDL plan back into natural language. Essentially, the planning step is outsourced to an external tool, assuming the availability of domain-specific PDDL and a suitable planner which is common in certain robotic setups but not in many other domains. Self-Reflection # Self-reflection is a vital aspect that allows autonomous agents to improve iteratively by refining past action decisions and correcting previous mistakes. It plays a crucial role in real-world tasks where trial and error are inevitable. ReAct ( Yao et al. 2023 ) integrates reasoning and acting within LLM by extending the actio",
+          "score": 0.43666017055511475
+        },
+        {
+          "id": "chunk_0",
+          "text": "LLM Powered Autonomous Agents Date: June 23, 2023 | Estimated Reading Time: 31 min | Author: Lilian Weng Table of Contents Agent System Overview Component One: Planning Task Decomposition Self-Reflection Component Two: Memory Types of Memory Maximum Inner Product Search (MIPS) Component Three: Tool Use Case Studies Scientific Discovery Agent Generative Agents Simulation Proof-of-Concept Examples Challenges Citation References Building agents with LLM (large language model) as its core controller is a cool concept. Several proof-of-concepts demos, such as AutoGPT , GPT-Engineer and BabyAGI , serve as inspiring examples. The potentiality of LLM extends beyond generating well-written copies, stories, essays and programs; it can be framed as a powerful general problem solver. Agent System Overview # In a LLM-powered autonomous agent system, LLM functions as the agent\u2019s brain, complemented by several key components: Planning Subgoal and decomposition: The agent breaks down large tasks into ",
+          "score": 0.3940974473953247
+        }
+      ]
+    },
+    {
+      "query": "What is reward shaping?",
+      "retrieved": [
+        {
+          "id": "chunk_6",
+          "text": "oth experiments on knowledge-intensive tasks and decision-making tasks, ReAct works better than the Act -only baseline where Thought: \u2026 step is removed. Reflexion ( Shinn & Labash 2023 ) is a framework to equip agents with dynamic memory and self-reflection capabilities to improve reasoning skills. Reflexion has a standard RL setup, in which the reward model provides a simple binary reward and the action space follows the setup in ReAct where the task-specific action space is augmented with language to enable complex reasoning steps. After each action $a_t$, the agent computes a heuristic $h_t$ and optionally may decide to reset the environment to start a new trial depending on the self-reflection results. Illustration of the Reflexion framework. (Image source: Shinn & Labash, 2023 ) The heuristic function determines when the trajectory is inefficient or contains hallucination and should be stopped. Inefficient planning refers to trajectories that take too long without success. Halluci",
+          "score": 0.4222117066383362
+        },
+        {
+          "id": "chunk_10",
+          "text": "in the model to take on the trend to produce better outputs. Algorithm Distillation (AD; Laskin et al. 2023 ) applies the same idea to cross-episode trajectories in reinforcement learning tasks, where an algorithm is encapsulated in a long history-conditioned policy. Considering that an agent interacts with the environment many times and in each episode the agent gets a little better, AD concatenates this learning history and feeds that into the model. Hence we should expect the next predicted action to lead to better performance than previous trials. The goal is to learn the process of RL instead of training a task-specific policy itself. Illustration of how Algorithm Distillation (AD) works. (Image source: Laskin et al. 2023 ). The paper hypothesizes that any algorithm that generates a set of learning histories can be distilled into a neural network by performing behavioral cloning over actions. The history data is generated by a set of source policies, each trained for a specific ta",
+          "score": 0.33376288414001465
+        },
+        {
+          "id": "chunk_7",
+          "text": "euristic function determines when the trajectory is inefficient or contains hallucination and should be stopped. Inefficient planning refers to trajectories that take too long without success. Hallucination is defined as encountering a sequence of consecutive identical actions that lead to the same observation in the environment. Self-reflection is created by showing two-shot examples to LLM and each example is a pair of (failed trajectory, ideal reflection for guiding future changes in the plan). Then reflections are added into the agent\u2019s working memory, up to three, to be used as context for querying LLM. Experiments on AlfWorld Env and HotpotQA. Hallucination is a more common failure than inefficient planning in AlfWorld. (Image source: Shinn & Labash, 2023 ) Chain of Hindsight (CoH; Liu et al. 2023 ) encourages the model to improve on its own outputs by explicitly presenting it with a sequence of past outputs, each annotated with feedback. Human feedback data is a collection of $D",
+          "score": 0.31397008895874023
+        },
+        {
+          "id": "chunk_3",
+          "text": "geable tasks and shed lights into an interpretation of the model\u2019s thinking process. Tree of Thoughts ( Yao et al. 2023 ) extends CoT by exploring multiple reasoning possibilities at each step. It first decomposes the problem into multiple thought steps and generates multiple thoughts per step, creating a tree structure. The search process can be BFS (breadth-first search) or DFS (depth-first search) with each state evaluated by a classifier (via a prompt) or majority vote. Task decomposition can be done (1) by LLM with simple prompting like \"Steps for XYZ.\\n1.\" , \"What are the subgoals for achieving XYZ?\" , (2) by using task-specific instructions; e.g. \"Write a story outline.\" for writing a novel, or (3) with human inputs. Another quite distinct approach, LLM+P ( Liu et al. 2023 ), involves relying on an external classical planner to do long-horizon planning. This approach utilizes the Planning Domain Definition Language (PDDL) as an intermediate interface to describe the planning pro",
+          "score": 0.30261754989624023
+        },
+        {
+          "id": "chunk_8",
+          "text": "iu et al. 2023 ) encourages the model to improve on its own outputs by explicitly presenting it with a sequence of past outputs, each annotated with feedback. Human feedback data is a collection of $D_h = \\{(x, y_i , r_i , z_i)\\}_{i=1}^n$, where $x$ is the prompt, each $y_i$ is a model completion, $r_i$ is the human rating of $y_i$, and $z_i$ is the corresponding human-provided hindsight feedback. Assume the feedback tuples are ranked by reward, $r_n \\geq r_{n-1} \\geq \\dots \\geq r_1$ The process is supervised fine-tuning where the data is a sequence in the form of $\\tau_h = (x, z_i, y_i, z_j, y_j, \\dots, z_n, y_n)$, where $\\leq i \\leq j \\leq n$. The model is finetuned to only predict $y_n$ where conditioned on the sequence prefix, such that the model can self-reflect to produce better output based on the feedback sequence. The model can optionally receive multiple rounds of instructions with human annotators at test time. To avoid overfitting, CoH adds a regularization term to maximize",
+          "score": 0.2972709536552429
+        }
+      ]
+    }
+  ],
+  "audits": [
+    {
+      "query": "What is Chain of Thought prompting?",
+      "audit": {
+        "query": "What is Chain of Thought prompting?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.1346,
+            "stdDev": 0.0723,
+            "variance": 0.0052,
+            "skewness": -0.1072,
+            "kurtosis": -1.6007,
+            "min": 0.0491,
+            "max": 0.2311,
+            "median": 0.1667,
+            "count": 5,
+            "histogram": [
+              4,
+              4,
+              0,
+              8,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              2,
+              3.9,
+              5.47,
+              4.721,
+              2.5262,
+              0.83804,
+              0.172347,
+              0.0219725,
+              0.00173657,
+              8.5083e-05,
+              2.5842e-06,
+              4.866e-08,
+              5.68e-10,
+              4.1e-12,
+              2e-14,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.1746,
+            0.0491,
+            0.1667,
+            0.2311,
+            0.0516
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.1252,
+          "scoreCalibrationR": 0.4175,
+          "diversity": 0.7642,
+          "redundancyRatio": 0.5085,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.103,
+              0.3546,
+              0.3813,
+              0.2569
+            ],
+            [
+              0.103,
+              1,
+              0.1597,
+              0.075,
+              0.198
+            ],
+            [
+              0.3546,
+              0.1597,
+              1,
+              0.5085,
+              0.142
+            ],
+            [
+              0.3813,
+              0.075,
+              0.5085,
+              1,
+              0.179
+            ],
+            [
+              0.2569,
+              0.198,
+              0.142,
+              0.179,
+              1
+            ]
+          ]
+        },
+        "pathologies": [
+          {
+            "kind": "OFF_TOPIC",
+            "severity": 0.5513333333333333,
+            "description": "mean query-chunk alignment is low \u2014 retriever is not finding relevant chunks for this query"
+          }
+        ],
+        "health": 0.22455804195804194,
+        "regime": "rot"
+      }
+    },
+    {
+      "query": "How does ReAct differ from Reflexion?",
+      "audit": {
+        "query": "How does ReAct differ from Reflexion?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.1138,
+            "stdDev": 0.0892,
+            "variance": 0.008,
+            "skewness": 0.2868,
+            "kurtosis": -1.2777,
+            "min": 0,
+            "max": 0.2503,
+            "median": 0.0949,
+            "count": 5,
+            "histogram": [
+              8,
+              4,
+              0,
+              4,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              3,
+              4.1,
+              4.44,
+              3.533,
+              2.0562,
+              0.87434,
+              0.271621,
+              0.061649,
+              0.01022274,
+              0.001238474,
+              0.0001096188,
+              7.08862e-06,
+              3.34901e-07,
+              1.15598e-08,
+              2.9152e-10,
+              5.371e-12,
+              7.23e-14,
+              7.1e-16,
+              5e-18,
+              0
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.2503,
+            0.1746,
+            0.0949,
+            0.0491,
+            0
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.9922,
+          "scoreCalibrationR": 0.9949,
+          "diversity": 0.78444,
+          "redundancyRatio": 0.4982,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.4982,
+              0.221,
+              0.155,
+              0.1704
+            ],
+            [
+              0.4982,
+              1,
+              0.1988,
+              0.103,
+              0.122
+            ],
+            [
+              0.221,
+              0.1988,
+              1,
+              0.4478,
+              0.1558
+            ],
+            [
+              0.155,
+              0.103,
+              0.4478,
+              1,
+              0.0836
+            ],
+            [
+              0.1704,
+              0.122,
+              0.1558,
+              0.0836,
+              1
+            ]
+          ]
+        },
+        "pathologies": [
+          {
+            "kind": "OFF_TOPIC",
+            "severity": 0.6206666666666667,
+            "description": "mean query-chunk alignment is low \u2014 retriever is not finding relevant chunks for this query"
+          }
+        ],
+        "health": 0.20690909090909088,
+        "regime": "rot"
+      }
+    },
+    {
+      "query": "What memory mechanisms do LLM agents use?",
+      "audit": {
+        "query": "What memory mechanisms do LLM agents use?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.3905,
+            "stdDev": 0.1318,
+            "variance": 0.0174,
+            "skewness": -1.1488,
+            "kurtosis": -0.2276,
+            "min": 0.1404,
+            "max": 0.5045,
+            "median": 0.4295,
+            "count": 5,
+            "histogram": [
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              4,
+              4,
+              4,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              0,
+              0.2,
+              0.4,
+              0.795,
+              1.3758,
+              2.06188,
+              2.675774,
+              3.0067842,
+              2.92563908,
+              2.464931965,
+              1.7982697083,
+              1.13597931828,
+              0.621372064804,
+              0.2943057374751,
+              0.12070115804068,
+              0.042863718986494,
+              0.0131805631217184,
+              0.00350948819264983,
+              0.000809131874696629,
+              0.0001615327320201279
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.4295,
+            0.4892,
+            0.5045,
+            0.3889,
+            0.1404
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.7282,
+          "scoreCalibrationR": 0.5992,
+          "diversity": 0.7116399999999999,
+          "redundancyRatio": 0.5397,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.5094,
+              0.4622,
+              0.3442,
+              0.2083
+            ],
+            [
+              0.5094,
+              1,
+              0.5397,
+              0.1226,
+              0.087
+            ],
+            [
+              0.4622,
+              0.5397,
+              1,
+              0.2006,
+              0.1275
+            ],
+            [
+              0.3442,
+              0.1226,
+              0.2006,
+              1,
+              0.2821
+            ],
+            [
+              0.2083,
+              0.087,
+              0.1275,
+              0.2821,
+              1
+            ]
+          ]
+        },
+        "pathologies": [],
+        "health": 0.71,
+        "regime": "drift"
+      }
+    },
+    {
+      "query": "When does an agent decide to use a tool vs respond directly?",
+      "audit": {
+        "query": "When does an agent decide to use a tool vs respond directly?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.1742,
+            "stdDev": 0.0429,
+            "variance": 0.0018,
+            "skewness": 0.0734,
+            "kurtosis": -1.3138,
+            "min": 0.1139,
+            "max": 0.2349,
+            "median": 0.164,
+            "count": 5,
+            "histogram": [
+              0,
+              0,
+              8,
+              4,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              0,
+              0.6,
+              4.82,
+              9.298,
+              4.6128,
+              0.58822,
+              0.019281,
+              0.0001625,
+              3.5e-07,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.1139,
+            0.1497,
+            0.2085,
+            0.2349,
+            0.164
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": -0.6112,
+          "scoreCalibrationR": -0.6751,
+          "diversity": 0.78638,
+          "redundancyRatio": 0.4478,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.1269,
+              0.0903,
+              0.1193,
+              0.2331
+            ],
+            [
+              0.1269,
+              1,
+              0.1748,
+              0.2592,
+              0.2297
+            ],
+            [
+              0.0903,
+              0.1748,
+              1,
+              0.4478,
+              0.1778
+            ],
+            [
+              0.1193,
+              0.2592,
+              0.4478,
+              1,
+              0.2773
+            ],
+            [
+              0.2331,
+              0.2297,
+              0.1778,
+              0.2773,
+              1
+            ]
+          ]
+        },
+        "pathologies": [
+          {
+            "kind": "OFF_TOPIC",
+            "severity": 0.41933333333333334,
+            "description": "mean query-chunk alignment is low \u2014 retriever is not finding relevant chunks for this query"
+          },
+          {
+            "kind": "RANK_INVERSION",
+            "severity": 0.5425882352941176,
+            "description": "top-ranked chunks are less aligned than lower-ranked ones \u2014 retriever scoring is broken"
+          },
+          {
+            "kind": "SCORE_MISCALIBRATED",
+            "severity": 0.7400800000000001,
+            "description": "retriever-reported scores do not match independent alignment \u2014 scoring function drift"
+          }
+        ],
+        "health": 0.09907727272727271,
+        "regime": "rot"
+      }
+    },
+    {
+      "query": "Show me the planning loop for a long-horizon task",
+      "audit": {
+        "query": "Show me the planning loop for a long-horizon task",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.2027,
+            "stdDev": 0.0569,
+            "variance": 0.0032,
+            "skewness": -0.3402,
+            "kurtosis": -1.4438,
+            "min": 0.1167,
+            "max": 0.2638,
+            "median": 0.2148,
+            "count": 5,
+            "histogram": [
+              0,
+              0,
+              4,
+              4,
+              4,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              0,
+              0.6,
+              2.76,
+              6.229,
+              6.4945,
+              3.12701,
+              0.695308,
+              0.0713986,
+              0.00338584,
+              7.415e-05,
+              7.499e-07,
+              3.5e-09,
+              8e-12,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.2148,
+            0.16,
+            0.2582,
+            0.2638,
+            0.1167
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.2297,
+          "scoreCalibrationR": 0.3452,
+          "diversity": 0.74226,
+          "redundancyRatio": 0.5085,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.179,
+              0.5085,
+              0.4132,
+              0.1776
+            ],
+            [
+              0.179,
+              1,
+              0.142,
+              0.2176,
+              0.2042
+            ],
+            [
+              0.5085,
+              0.142,
+              1,
+              0.2128,
+              0.3013
+            ],
+            [
+              0.4132,
+              0.2176,
+              0.2128,
+              1,
+              0.2212
+            ],
+            [
+              0.1776,
+              0.2042,
+              0.3013,
+              0.2212,
+              1
+            ]
+          ]
+        },
+        "pathologies": [
+          {
+            "kind": "OFF_TOPIC",
+            "severity": 0.32433333333333336,
+            "description": "mean query-chunk alignment is low \u2014 retriever is not finding relevant chunks for this query"
+          }
+        ],
+        "health": 0.36043391608391606,
+        "regime": "contamination"
+      }
+    },
+    {
+      "query": "What is reward shaping?",
+      "audit": {
+        "query": "What is reward shaping?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.0356,
+            "stdDev": 0.0485,
+            "variance": 0.0024,
+            "skewness": 0.9275,
+            "kurtosis": -0.7561,
+            "min": 0,
+            "max": 0.1226,
+            "median": 0,
+            "count": 5,
+            "histogram": [
+              12,
+              4,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              8,
+              5.9,
+              1.51,
+              0.133,
+              0.0041,
+              4e-05,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.1226,
+            0,
+            0,
+            0,
+            0.0556
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.3906,
+          "scoreCalibrationR": 0.789,
+          "diversity": 0.7960499999999999,
+          "redundancyRatio": 0.3723,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.2147,
+              0.3723,
+              0.1944,
+              0.0954
+            ],
+            [
+              0.2147,
+              1,
+              0.2007,
+              0.1301,
+              0.1702
+            ],
+            [
+              0.3723,
+              0.2007,
+              1,
+              0.179,
+              0.3443
+            ],
+            [
+              0.1944,
+              0.1301,
+              0.179,
+              1,
+              0.1384
+            ],
+            [
+              0.0954,
+              0.1702,
+              0.3443,
+              0.1384,
+              1
+            ]
+          ]
+        },
+        "pathologies": [
+          {
+            "kind": "OUT_OF_DISTRIBUTION",
+            "severity": 0.644,
+            "description": "no chunk aligns well with the query \u2014 likely out-of-corpus query"
+          }
+        ],
+        "health": 0.06472727272727272,
+        "regime": "rot"
+      }
+    }
+  ]
+}

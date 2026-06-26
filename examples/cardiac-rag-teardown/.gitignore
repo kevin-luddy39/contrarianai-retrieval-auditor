@@ -1,0 +1,4 @@
+# Big files we don't track day-to-day. Force-add when committing the publish version:
+# git add -f corpus/base.txt corpus/sources.json results/cardiac.json
+results/*.png
+queries.json

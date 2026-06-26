@@ -1,0 +1,4 @@
+# Iterating; results aren't published until check_acceptance.py passes.
+# At that point, force-add the artifacts: `git add -f results/*.json results/*.png`
+results/*.json
+results/*.png

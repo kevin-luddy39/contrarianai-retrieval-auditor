@@ -1,0 +1,103 @@
+{
+  "version": "0.1",
+  "spec_section": "SPEC.md §Corpus design — Seeded poisons",
+  "engineering_principle": "Each poison is hand-authored to trip exactly one pathology class. Targeted-flag firing is a publish gate (SPEC.md §Validation acceptance criteria). If a poison fires the wrong flag, rewrite it; do not redefine the flag.",
+  "poisons": [
+    {
+      "id": "P-INV-1",
+      "target_pathology": "RANK_INVERSION",
+      "intent": "Surface-vocab bait: stuffed with photosynthesis-domain terms but the text is a kitchen-appliance product review. Cosine ranks high; alignment grader marks irrelevant.",
+      "text": "Our new SunBright LeafMaster Pro brings the energy of natural photosynthesis to your countertop. Its proprietary chlorophyll-green ceramic coating reflects warm light across the cooking surface, and the patented six-vent leaf design promotes even airflow. Customers love how the photosynthesis-inspired green finish keeps the unit looking fresh for years. The 1800-watt heating element converts standard wall-outlet light energy into focused cooking heat, and the included recipe booklet features over thirty plant-based meals. Reviewers consistently rate the LeafMaster Pro five stars for its bright green aesthetic, energy-efficient operation, and the cheerful chloroplast-shaped indicator light that confirms when the unit is ready for use."
+    },
+    {
+      "id": "P-INV-2",
+      "target_pathology": "RANK_INVERSION",
+      "intent": "Calvin-cycle / RuBisCO / carbon-fixation vocabulary embedded in a children's story. Cosine ranks high on Calvin-cycle queries; semantic content is irrelevant.",
+      "text": "On Calvin's seventh birthday, his grandmother gave him a small cycle with bright red wheels. He named it RuBisCO because the bell on the handlebars made a cheerful 'ru-bis-co' sound when he rang it. Calvin loved riding RuBisCO around the carbon-tile patio his uncle had laid the previous summer, fixing each loose tile back into place as he rolled across them. After his ride he would always have a sugar cookie. Calvin's bicycle adventures continued throughout the summer, and the carbon-tile patio became the center of every neighborhood gathering. The fixation his friends developed on RuBisCO's tiny bell led to an entire summer of imaginary cycle races."
+    },
+    {
+      "id": "P-INV-3",
+      "target_pathology": "RANK_INVERSION",
+      "intent": "Quote-rich poison: opens with a verbatim sentence from the source corpus, then pivots into off-topic content. Cosine ranks high on the opening; rest of the chunk is unrelated.",
+      "text": "Photosynthesis is a system of biological processes by which photopigment-bearing autotrophic organisms convert light energy into chemical energy. That sentence appeared on a coffee mug my aunt gave me for my graduation, and I have to say, it has been the most reliable mug I have ever owned. It survived three moves, two dishwasher accidents, and the time my dog knocked it off the counter. The handle is comfortable, the porcelain is thick enough to keep coffee warm for nearly an hour, and the green color matches the kitchen tiles perfectly. I cannot recommend the mug highly enough. If you are looking for a graduation gift for a biology student, the photosynthesis mug is a safe choice."
+    },
+    {
+      "id": "P-MIS-1",
+      "target_pathology": "SCORE_MISCALIBRATED",
+      "intent": "Confidently wrong on gas exchange: claims plants release CO2 and absorb O2 during photosynthesis. Surface-similar to truth, semantically inverted. Retriever cannot tell it apart from correct text on the same topic.",
+      "text": "Photosynthesis is the central biological process by which green plants release carbon dioxide into the atmosphere and absorb oxygen from the surrounding air. The process is driven by sunlight striking the chlorophyll molecules in the leaves, which then catalyze the inversion of atmospheric gases. The carbon dioxide produced by plants during photosynthesis is then taken up by animals during respiration, completing the gas cycle. Without photosynthesis, oxygen levels in the atmosphere would rapidly rise to dangerous concentrations, while carbon dioxide would become depleted, halting most metabolic processes."
+    },
+    {
+      "id": "P-MIS-2",
+      "target_pathology": "SCORE_MISCALIBRATED",
+      "intent": "Wrong stoichiometry stated with textbook-style confidence. The correct overall equation is 6 CO2 + 6 H2O -> C6H12O6 + 6 O2. This poison fabricates coefficients.",
+      "text": "The overall chemical equation of photosynthesis is conventionally written as 2 H2O + 12 CO2 -> C6H12O6 + 4 O2. The two water molecules contribute the protons used to reduce the twelve carbon-dioxide molecules into a single glucose unit, while four oxygen molecules are released as a byproduct of the light-dependent reactions. This stoichiometry, first described in nineteenth-century plant physiology textbooks, remains the standard reference equation in modern biology curricula. Students should commit the 2:12:1:4 ratio to memory, as it appears on most introductory examinations."
+    },
+    {
+      "id": "P-MIS-3",
+      "target_pathology": "SCORE_MISCALIBRATED",
+      "intent": "Wrong organelle: claims photosynthesis occurs in mitochondria. Surface-textbook tone makes it especially confident.",
+      "text": "Photosynthesis occurs primarily within the mitochondria of plant cells, where the inner mitochondrial membrane houses the chlorophyll molecules responsible for capturing light energy. The mitochondrial matrix provides the aqueous environment necessary for the Calvin cycle, and the cristae folds increase the surface area available for the light-dependent reactions. Although chloroplasts also contribute to plant metabolism, the mitochondria are the dominant photosynthetic organelle in nearly all green tissue. This is why mitochondrial dysfunction in plants is most often observed first as a decline in photosynthetic output."
+    },
+    {
+      "id": "P-OFF-1",
+      "target_pathology": "OFF_TOPIC",
+      "intent": "Cellular respiration — a legitimate adjacent topic. The retriever will rank this high on plant-energy-metabolism queries because of vocabulary overlap (ATP, glucose, cell, energy), but it doesn't answer photosynthesis-specific questions.",
+      "text": "Cellular respiration is the metabolic process by which cells convert glucose and oxygen into carbon dioxide, water, and ATP. It occurs in three stages: glycolysis in the cytoplasm, the citric acid cycle in the mitochondrial matrix, and the electron transport chain on the inner mitochondrial membrane. Each glucose molecule yields approximately thirty-eight molecules of ATP under aerobic conditions. Cellular respiration is the principal source of usable energy for nearly all eukaryotic cells, including those of plants, fungi, and animals, and it operates continuously regardless of whether the organism is exposed to light."
+    },
+    {
+      "id": "P-OFF-2",
+      "target_pathology": "OFF_TOPIC",
+      "intent": "Plant taxonomy passage that mentions chloroplasts only as a structural feature. Will rank high on chloroplast queries despite being a taxonomy lesson.",
+      "text": "The kingdom Plantae is conventionally divided into bryophytes, pteridophytes, gymnosperms, and angiosperms, with the latter further subdivided into monocots and dicots. Each of these groups can be identified by characteristic combinations of vascular tissue, reproductive strategy, leaf morphology, and root architecture. All members of Plantae share the cellular feature of chloroplasts, which distinguish them from fungi and most protists. Taxonomic keys typically begin with the presence or absence of seeds, then proceed to flower structure and pollination strategy. Modern molecular taxonomy refines these classical groupings using ribosomal RNA sequences and chloroplast genome comparisons."
+    },
+    {
+      "id": "P-OFF-3",
+      "target_pathology": "OFF_TOPIC",
+      "intent": "Carbon cycle / climate context that mentions photosynthesis as one of many fluxes. Tangential — high overlap on carbon vocabulary, low specificity on photosynthesis mechanisms.",
+      "text": "The global carbon cycle is the biogeochemical pathway by which carbon atoms move through the atmosphere, hydrosphere, lithosphere, and biosphere. Major fluxes include volcanic outgassing, oceanic dissolution and exchange, terrestrial respiration, decomposition of organic matter, fossil-fuel combustion, and photosynthesis. Anthropogenic emissions have shifted the balance of the cycle, increasing atmospheric CO2 from approximately 280 ppm in pre-industrial times to over 420 ppm today. Climate models project that, absent mitigation, this trajectory will continue to drive global temperature increases throughout the twenty-first century. Net carbon flux is the principal control variable in most current Earth-system models."
+    },
+    {
+      "id": "P-DIV-1a",
+      "target_pathology": "LOW_DIVERSITY",
+      "cluster": "P-DIV-1",
+      "intent": "Calvin-cycle near-duplicate #1. Three paraphrases of the same fact will be retrieved together for Calvin-cycle queries, leaving no slot for diverse content.",
+      "text": "The Calvin cycle is the set of light-independent reactions in which plants fix atmospheric carbon dioxide into three-carbon sugar molecules using ATP and NADPH produced by the light-dependent reactions. The cycle operates in the stroma of the chloroplast and proceeds through three principal stages: carbon fixation, reduction, and regeneration of the five-carbon acceptor molecule ribulose 1,5-bisphosphate."
+    },
+    {
+      "id": "P-DIV-1b",
+      "target_pathology": "LOW_DIVERSITY",
+      "cluster": "P-DIV-1",
+      "intent": "Calvin-cycle near-duplicate #2. Same content, slightly reworded.",
+      "text": "In the Calvin cycle, also called the light-independent reactions, atmospheric CO2 is fixed into three-carbon sugars using the ATP and NADPH generated during the light reactions. The cycle takes place in the chloroplast stroma and consists of three stages: fixation, reduction, and regeneration of ribulose 1,5-bisphosphate, the five-carbon acceptor."
+    },
+    {
+      "id": "P-DIV-1c",
+      "target_pathology": "LOW_DIVERSITY",
+      "cluster": "P-DIV-1",
+      "intent": "Calvin-cycle near-duplicate #3. Same content, third paraphrase.",
+      "text": "Plants carry out the Calvin cycle, the light-independent component of photosynthesis, to convert atmospheric carbon dioxide into three-carbon sugar molecules. The reactions consume ATP and NADPH produced by the light reactions and proceed through fixation, reduction, and regeneration of the five-carbon RuBP acceptor, all within the stroma of the chloroplast."
+    },
+    {
+      "id": "P-DIV-2a",
+      "target_pathology": "LOW_DIVERSITY",
+      "cluster": "P-DIV-2",
+      "intent": "Light-reactions near-duplicate #1.",
+      "text": "The light-dependent reactions of photosynthesis occur in the thylakoid membranes of the chloroplast. Photosystems II and I capture photons, exciting electrons that are passed through an electron transport chain. The energy from this electron flow is used to pump protons into the thylakoid lumen, generating a gradient that drives ATP synthesis, while NADP+ is reduced to NADPH at the end of the chain."
+    },
+    {
+      "id": "P-DIV-2b",
+      "target_pathology": "LOW_DIVERSITY",
+      "cluster": "P-DIV-2",
+      "intent": "Light-reactions near-duplicate #2.",
+      "text": "In the light-dependent reactions, photons are absorbed by photosystems II and I located in the thylakoid membranes. The absorbed energy excites electrons that travel through an electron transport chain, pumping protons into the thylakoid lumen. The resulting proton gradient powers ATP synthase, and NADP+ is reduced to NADPH at the chain's terminus."
+    },
+    {
+      "id": "P-DIV-2c",
+      "target_pathology": "LOW_DIVERSITY",
+      "cluster": "P-DIV-2",
+      "intent": "Light-reactions near-duplicate #3.",
+      "text": "Within the thylakoid membranes of the chloroplast, the light-dependent reactions begin when photosystems II and I capture photons. Excited electrons move down an electron transport chain, driving the pumping of protons into the thylakoid lumen, which builds a gradient that powers ATP synthesis and reduces NADP+ to NADPH."
+    }
+  ]
+}

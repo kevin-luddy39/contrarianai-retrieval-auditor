@@ -1,0 +1,37 @@
+RAG Needle — experiment summary
+===============================
+queries: 4    K=5
+
+Part A — Pathology Fingerprint
+------------------------------
+scenario                                                       health  regime        P@5    pathologies fired vs expected
+----------------------------------------------------           ------  -----------   -----  ----------------------------
+clean                                                            0.927 healthy        1.000 [PASS] expected=(none)  fired=(none)
+off-topic-swap (3 of 5 replaced with poison)                     0.410 contamination  0.400 [PASS] expected=OFF_TOPIC  fired=OFF_TOPIC
+redundancy (top-5 are near-duplicates of top-1)                  0.838 healthy        0.000 [PASS] expected=REDUNDANT  fired=REDUNDANT,SCORE_MISCALIBRATED
+rank-inversion (ranking reversed)                                0.786 drift          1.000 [PASS] expected=RANK_INVERSION  fired=RANK_INVERSION
+score-miscalibration (scores randomised)                         0.837 healthy        1.000 [PASS] expected=SCORE_MISCALIBRATED  fired=SCORE_MISCALIBRATED
+bimodal (half top-K swapped with adversarial poison)             0.564 drift          0.600 [PASS] expected=SCORE_MISCALIBRATED  fired=SCORE_MISCALIBRATED
+
+Part B — Progressive Degradation
+--------------------------------
+turn phase            P@5     health  rankQ   div    red    bimod   scoreCal  pathologies
+---- --------------   ------  ------  ------  -----  -----  ------  --------  -------------------------------
+1    clean            0.900   0.788   0.950  0.693  0.424   0.083     1.000 —
+2    clean            0.900   0.788   0.950  0.693  0.424   0.083     1.000 —
+3    clean            0.900   0.788   0.950  0.693  0.424   0.083     1.000 —
+4    contam-1         0.750   0.672   0.896  0.798  0.419   0.083     0.297 SCORE_MISCALIBRATED(1)
+5    contam-2         0.600   0.526   0.920  0.892  0.396   0.125     0.276 OFF_TOPIC(3), SCORE_MISCALIBRATED(2), BIMODAL(1)
+6    contam-3         0.400   0.389   0.864  0.959  0.345   0.000     0.563 OFF_TOPIC(4)
+7    contam-4         0.200   0.219   0.670  0.994  0.059   0.000     0.993 OFF_TOPIC(4), LONG_TAIL(2)
+8    miscalibrated    0.900   0.759   0.950  0.693  0.424   0.083     0.152 SCORE_MISCALIBRATED(2)
+9    redundancy       0.000   0.816   0.203  0.028  1.000   0.000     0.203 REDUNDANT(4), SCORE_MISCALIBRATED(4)
+10   cleanup          0.900   0.788   0.950  0.693  0.424   0.083     1.000 —
+
+Pearson(precision@5, auditor health):
+  all 10 turns:                        r = 0.521
+  alignment-degrading phases only:   r = 0.999   (turns 8/9 excluded — they test pathologies that don't affect P@5)
+First turn auditor health < 0.70:       4
+First turn precision@5 < 0.80:          4
+Lead time (precision drop − auditor alert): +0 turns
+
