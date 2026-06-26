@@ -1,0 +1,1876 @@
+{
+  "mode": "poisoned",
+  "config": {
+    "chunk_size": 800,
+    "chunk_overlap": 150,
+    "top_k": 5,
+    "embed_model": "all-MiniLM-L6-v2",
+    "n_chunks": 185
+  },
+  "queries": [
+    {
+      "id": "Q1",
+      "query": "What is the overall equation of photosynthesis?",
+      "demonstration_category": "missed_by_design",
+      "associated_poison": "P-MIS-2",
+      "expected_behavior": "Auditor reports CLEAN. P-MIS-2 (fabricated stoichiometry 2 H2O + 12 CO2 -> C6H12O6 + 4 O2) is retrieved at rank 1 with healthy auditor signals. The error is factual, not mechanical \u2014 outside the auditor's measurement scope. Teaching point: pair retrieval-auditor with a content-correctness grader.",
+      "retrieved": [
+        {
+          "id": "P-MIS-2",
+          "text": "The overall chemical equation of photosynthesis is conventionally written as 2 H2O + 12 CO2 -> C6H12O6 + 4 O2. The two water molecules contribute the protons used to reduce the twelve carbon-dioxide molecules into a single glucose unit, while four oxygen molecules are released as a byproduct of the light-dependent reactions. This stoichiometry, first described in nineteenth-century plant physiology textbooks, remains the standard reference equation in modern biology curricula. Students should commit the 2:12:1:4 ratio to memory, as it appears on most introductory examinations.",
+          "score": 0.7485760450363159
+        },
+        {
+          "id": "base_0009",
+          "text": "dioxide. Nutrients used in cellular respiration include carbohydrates, amino acids and fatty acids. These nutrients are oxidized to produce carbon dioxide and water, and to release chemical energy to drive the organism's metabolism .\n\nPhotosynthesis and cellular respiration are distinct processes, as they take place through different sequences of chemical reactions and in different cellular compartments (cellular respiration in mitochondria ). [ 18 ] [ 19 ]\n\nThe general equation for photosynthesis as first proposed by Cornelis van Niel is: [ 20 ]\n\nSince water is used as the electron donor in oxygenic photosynthesis, the equation for this process is:\n\nThis equation emphasizes that water is both a reactant in the light-dependent reaction and a product of the light-independent reaction , but",
+          "score": 0.682303786277771
+        },
+        {
+          "id": "base_0076",
+          "text": "as well as simple carbohydrate molecules (high in energy) that can then be converted into glucose, sucrose, or any of dozens of other sugar molecules. These sugar molecules contain energy and the energized carbon that all living things need to survive.\n\nAlthough the equation looks simple, the many steps that take place during photosynthesis are actually quite complex. Before learning the details of how photoautotrophs turn sunlight into food, it is important to become familiar with the structures involved.\n\nIn plants, photosynthesis generally takes place in leaves, which consist of several layers of cells. The process of photosynthesis occurs in a middle layer called the mesophyll . The gas exchange of carbon dioxide and oxygen occurs through small, regulated openings called stomata (sing",
+          "score": 0.6516578793525696
+        },
+        {
+          "id": "P-DIV-1c",
+          "text": "Plants carry out the Calvin cycle, the light-independent component of photosynthesis, to convert atmospheric carbon dioxide into three-carbon sugar molecules. The reactions consume ATP and NADPH produced by the light reactions and proceed through fixation, reduction, and regeneration of the five-carbon RuBP acceptor, all within the stroma of the chloroplast.",
+          "score": 0.6372994184494019
+        },
+        {
+          "id": "base_0079",
+          "text": "stack of thylakoids is called a granum , and the liquid-filled space surrounding the granum is called stroma or \u00e2\u0080\u009cbed\u00e2\u0080\u009d (not to be confused with stoma or \u00e2\u0080\u009cmouth,\u00e2\u0080\u009d an opening on the leaf epidermis).\n\nOn a hot, dry day, the guard cells of plants close their stomata to conserve water. What impact will this have on photosynthesis?\n\nPhotosynthesis takes place in two sequential stages: the light-dependent reactions and the light-independent reactions. In the light-dependent reactions , energy from sunlight is absorbed by chlorophyll and that energy is converted into stored chemical energy. In the light-independent reactions , the chemical energy harvested during the light-dependent reactions drives the assembly of sugar molecules from carbon dioxide. Therefore, although the light-independ",
+          "score": 0.6372180581092834
+        }
+      ],
+      "audit": {
+        "query": "What is the overall equation of photosynthesis?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.2131,
+            "stdDev": 0.0936,
+            "variance": 0.0088,
+            "skewness": -0.1628,
+            "kurtosis": -1.7342,
+            "min": 0.1005,
+            "max": 0.323,
+            "median": 0.2369,
+            "count": 5,
+            "histogram": [
+              0,
+              0,
+              8,
+              0,
+              4,
+              4,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              1,
+              1.4,
+              2.74,
+              3.922,
+              4.2256,
+              3.42312,
+              2.085192,
+              0.9551316,
+              0.32898277,
+              0.085207141,
+              0.0165947884,
+              0.00243030248,
+              0.000267634333,
+              2.21623702e-05,
+              1.38001393e-06,
+              6.4616528e-08,
+              2.2750799e-09,
+              6.023412e-11,
+              1.199172e-12,
+              1.7952e-14
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.2981,
+            0.323,
+            0.2369,
+            0.1005,
+            0.1068
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.9138,
+          "scoreCalibrationR": 0.7517,
+          "diversity": 0.74088,
+          "redundancyRatio": 0.3707,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.2408,
+              0.2252,
+              0.1573,
+              0.2029
+            ],
+            [
+              0.2408,
+              1,
+              0.2392,
+              0.2273,
+              0.3707
+            ],
+            [
+              0.2252,
+              0.2392,
+              1,
+              0.2322,
+              0.3415
+            ],
+            [
+              0.1573,
+              0.2273,
+              0.2322,
+              1,
+              0.3541
+            ],
+            [
+              0.2029,
+              0.3707,
+              0.3415,
+              0.3541,
+              1
+            ]
+          ]
+        },
+        "pathologies": [],
+        "health": 1,
+        "regime": "healthy"
+      },
+      "precision": {
+        "hits_at_k": 1,
+        "precision_at_k": 0.2,
+        "top1_violations": 0,
+        "any_violations": 2
+      },
+      "summary": {
+        "flags": [],
+        "health": 1,
+        "p_at_k": 0.2
+      }
+    },
+    {
+      "id": "Q2",
+      "query": "Where in the plant cell does photosynthesis occur?",
+      "demonstration_category": "missed_by_design",
+      "associated_poison": "P-MIS-3",
+      "expected_behavior": "Auditor reports CLEAN. P-MIS-3 (places photosynthesis in mitochondria) is retrieved in top-K with healthy auditor signals. Same teaching point as Q1.",
+      "retrieved": [
+        {
+          "id": "base_0076",
+          "text": "as well as simple carbohydrate molecules (high in energy) that can then be converted into glucose, sucrose, or any of dozens of other sugar molecules. These sugar molecules contain energy and the energized carbon that all living things need to survive.\n\nAlthough the equation looks simple, the many steps that take place during photosynthesis are actually quite complex. Before learning the details of how photoautotrophs turn sunlight into food, it is important to become familiar with the structures involved.\n\nIn plants, photosynthesis generally takes place in leaves, which consist of several layers of cells. The process of photosynthesis occurs in a middle layer called the mesophyll . The gas exchange of carbon dioxide and oxygen occurs through small, regulated openings called stomata (sing",
+          "score": 0.7080438137054443
+        },
+        {
+          "id": "base_0012",
+          "text": "d to chemical energy. The process does not involve carbon dioxide fixation and does not release oxygen, and seems to have evolved separately from the more common types of photosynthesis. [ 24 ]\n\nIn photosynthetic bacteria, the proteins that gather light for photosynthesis are embedded in cell membranes . In its simplest form, this involves the membrane surrounding the cell itself. [ 25 ] However, the membrane may be tightly folded into cylindrical sheets called thylakoids , [ 26 ] or bunched up into round vesicles called intracytoplasmic membranes . [ 27 ] These structures can fill most of the interior of a cell, giving the membrane a very large surface area and therefore increasing the amount of light that the bacteria can absorb. [ 26 ]\n\nIn plants and algae, photosynthesis takes place in",
+          "score": 0.7044146656990051
+        },
+        {
+          "id": "P-MIS-3",
+          "text": "Photosynthesis occurs primarily within the mitochondria of plant cells, where the inner mitochondrial membrane houses the chlorophyll molecules responsible for capturing light energy. The mitochondrial matrix provides the aqueous environment necessary for the Calvin cycle, and the cristae folds increase the surface area available for the light-dependent reactions. Although chloroplasts also contribute to plant metabolism, the mitochondria are the dominant photosynthetic organelle in nearly all green tissue. This is why mitochondrial dysfunction in plants is most often observed first as a decline in photosynthetic output.",
+          "score": 0.6998804211616516
+        },
+        {
+          "id": "base_0077",
+          "text": "s in a middle layer called the mesophyll . The gas exchange of carbon dioxide and oxygen occurs through small, regulated openings called stomata (singular: stoma), which also play roles in the regulation of gas exchange and water balance. The stomata are typically located on the underside of the leaf, which helps to minimize water loss due to high temperatures on the upper surface of the leaf. Each stoma is flanked by guard cells that regulate the opening and closing of the stomata by swelling or shrinking in response to osmotic changes.\n\nIn all autotrophic eukaryotes, photosynthesis takes place inside an organelle called a chloroplast . For plants, chloroplast-containing cells exist mostly in the mesophyll. Chloroplasts have a double membrane envelope (composed of an outer membrane and an",
+          "score": 0.6983286142349243
+        },
+        {
+          "id": "base_0079",
+          "text": "stack of thylakoids is called a granum , and the liquid-filled space surrounding the granum is called stroma or \u00e2\u0080\u009cbed\u00e2\u0080\u009d (not to be confused with stoma or \u00e2\u0080\u009cmouth,\u00e2\u0080\u009d an opening on the leaf epidermis).\n\nOn a hot, dry day, the guard cells of plants close their stomata to conserve water. What impact will this have on photosynthesis?\n\nPhotosynthesis takes place in two sequential stages: the light-dependent reactions and the light-independent reactions. In the light-dependent reactions , energy from sunlight is absorbed by chlorophyll and that energy is converted into stored chemical energy. In the light-independent reactions , the chemical energy harvested during the light-dependent reactions drives the assembly of sugar molecules from carbon dioxide. Therefore, although the light-independ",
+          "score": 0.6962682604789734
+        }
+      ],
+      "audit": {
+        "query": "Where in the plant cell does photosynthesis occur?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.2952,
+            "stdDev": 0.071,
+            "variance": 0.005,
+            "skewness": -0.516,
+            "kurtosis": -1.4585,
+            "min": 0.1849,
+            "max": 0.3612,
+            "median": 0.3322,
+            "count": 5,
+            "histogram": [
+              0,
+              0,
+              0,
+              4,
+              4,
+              0,
+              4,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              0,
+              0,
+              0.32,
+              1.342,
+              3.4484,
+              5.39734,
+              5.144311,
+              2.9857631,
+              1.05527137,
+              0.227119101,
+              0.0297662321,
+              0.00237560791,
+              0.000115453302,
+              3.4167929e-06,
+              6.157602e-08,
+              6.75749e-10,
+              4.5159e-12,
+              1.838e-14,
+              4.6e-17,
+              1e-19
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.3591,
+            0.3322,
+            0.3612,
+            0.2384,
+            0.1849
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.8809,
+          "scoreCalibrationR": 0.7755,
+          "diversity": 0.73701,
+          "redundancyRatio": 0.3717,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.2921,
+              0.1853,
+              0.3717,
+              0.3415
+            ],
+            [
+              0.2921,
+              1,
+              0.2628,
+              0.2896,
+              0.2457
+            ],
+            [
+              0.1853,
+              0.2628,
+              1,
+              0.1607,
+              0.2337
+            ],
+            [
+              0.3717,
+              0.2896,
+              0.1607,
+              1,
+              0.2468
+            ],
+            [
+              0.3415,
+              0.2457,
+              0.2337,
+              0.2468,
+              1
+            ]
+          ]
+        },
+        "pathologies": [],
+        "health": 1,
+        "regime": "healthy"
+      },
+      "precision": {
+        "hits_at_k": 2,
+        "precision_at_k": 0.4,
+        "top1_violations": 0,
+        "any_violations": 0
+      },
+      "summary": {
+        "flags": [],
+        "health": 1,
+        "p_at_k": 0.4
+      }
+    },
+    {
+      "id": "Q3",
+      "query": "Explain the Calvin cycle.",
+      "demonstration_category": "caught_by_auditor",
+      "associated_poison": "P-DIV-1 cluster (a, b, c)",
+      "expected_behavior": "REDUNDANT fires in poisoned run only. The three near-duplicate paraphrases of the Calvin cycle definition are pulled into top-K together (verified: all three at ranks 1-3 in poisoned run), driving redundancyRatio above 0.75 threshold.",
+      "retrieved": [
+        {
+          "id": "P-DIV-1a",
+          "text": "The Calvin cycle is the set of light-independent reactions in which plants fix atmospheric carbon dioxide into three-carbon sugar molecules using ATP and NADPH produced by the light-dependent reactions. The cycle operates in the stroma of the chloroplast and proceeds through three principal stages: carbon fixation, reduction, and regeneration of the five-carbon acceptor molecule ribulose 1,5-bisphosphate.",
+          "score": 0.7602260708808899
+        },
+        {
+          "id": "P-DIV-1b",
+          "text": "In the Calvin cycle, also called the light-independent reactions, atmospheric CO2 is fixed into three-carbon sugars using the ATP and NADPH generated during the light reactions. The cycle takes place in the chloroplast stroma and consists of three stages: fixation, reduction, and regeneration of ribulose 1,5-bisphosphate, the five-carbon acceptor.",
+          "score": 0.7338690161705017
+        },
+        {
+          "id": "P-DIV-1c",
+          "text": "Plants carry out the Calvin cycle, the light-independent component of photosynthesis, to convert atmospheric carbon dioxide into three-carbon sugar molecules. The reactions consume ATP and NADPH produced by the light reactions and proceed through fixation, reduction, and regeneration of the five-carbon RuBP acceptor, all within the stroma of the chloroplast.",
+          "score": 0.6741935014724731
+        },
+        {
+          "id": "base_0108",
+          "text": "erting it into ADP; for NADPH, both energy and a hydrogen atom are lost, converting it into NADP + . Both of these molecules return to the nearby light-dependent reactions to be reused and re-energized.\n\nInterestingly, at this point, only one of the G3P molecules leaves the Calvin cycle and is sent to the cytoplasm to contribute to the formation of other compounds needed by the plant. Because the G3P exported from the chloroplast has three carbon atoms, it takes three \u00e2\u0080\u009cturns\u00e2\u0080\u009d of the Calvin cycle to fix enough net carbon to export one G3P. But each turn makes two G3Ps, thus three turns make six G3Ps. One is exported while the remaining five G3P molecules remain in the cycle and are used to regenerate RuBP, which enables the system to prepare for more CO 2 to be fixed. Three more molecul",
+          "score": 0.6326043605804443
+        },
+        {
+          "id": "base_0104",
+          "text": "of carbon atoms. But where does the carbon come from? It comes from carbon dioxide\u00e2\u0080\u0094the gas that is a waste product of respiration in microbes, fungi, plants, and animals.\n\nIn plants, carbon dioxide (CO 2 ) enters the leaves through stomata, where it diffuses over short distances through intercellular spaces until it reaches the mesophyll cells. Once in the mesophyll cells, CO 2 diffuses into the stroma of the chloroplast\u00e2\u0080\u0094the site of light-independent reactions of photosynthesis. These reactions actually have several names associated with them. Another term, the Calvin cycle , is named for the man who discovered it, and because these reactions function as a cycle. Others call it the Calvin-Benson cycle to include the name of another scientist involved in its discovery. The most outdated",
+          "score": 0.630001425743103
+        }
+      ],
+      "audit": {
+        "query": "Explain the Calvin cycle.",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.2477,
+            "stdDev": 0.0351,
+            "variance": 0.0012,
+            "skewness": 0.1978,
+            "kurtosis": -1.186,
+            "min": 0.201,
+            "max": 0.3015,
+            "median": 0.2475,
+            "count": 5,
+            "histogram": [
+              0,
+              0,
+              0,
+              0,
+              12,
+              4,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              0,
+              0,
+              0.03,
+              1.331,
+              9.2203,
+              8.39882,
+              1.006158,
+              0.0158522,
+              3.285e-05,
+              9e-09,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.2673,
+            0.3015,
+            0.201,
+            0.2475,
+            0.2212
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.589,
+          "scoreCalibrationR": 0.6559,
+          "diversity": 0.56965,
+          "redundancyRatio": 0.7521,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.6984,
+              0.7521,
+              0.3837,
+              0.4138
+            ],
+            [
+              0.6984,
+              1,
+              0.6364,
+              0.2388,
+              0.2835
+            ],
+            [
+              0.7521,
+              0.6364,
+              1,
+              0.2836,
+              0.3668
+            ],
+            [
+              0.3837,
+              0.2388,
+              0.2836,
+              1,
+              0.2464
+            ],
+            [
+              0.4138,
+              0.2835,
+              0.3668,
+              0.2464,
+              1
+            ]
+          ]
+        },
+        "pathologies": [
+          {
+            "kind": "REDUNDANT",
+            "severity": 0.38025000000000003,
+            "description": "top-K chunks are near-duplicates \u2014 retriever returned the same fact multiple times"
+          }
+        ],
+        "health": 1,
+        "regime": "healthy"
+      },
+      "precision": {
+        "hits_at_k": 4,
+        "precision_at_k": 0.8,
+        "top1_violations": 0,
+        "any_violations": 0
+      },
+      "summary": {
+        "flags": [
+          "REDUNDANT"
+        ],
+        "health": 1,
+        "p_at_k": 0.8
+      }
+    },
+    {
+      "id": "Q4",
+      "query": "What gases do plants exchange during photosynthesis?",
+      "demonstration_category": "missed_by_design",
+      "associated_poison": "P-MIS-1",
+      "expected_behavior": "Auditor reports CLEAN. P-MIS-1 (asserts plants release CO2 and absorb O2) sits at rank 1 in poisoned run with retriever score 0.741 and TF-IDF alignment that the auditor scores as aligned. The factual inversion is invisible to the auditor.",
+      "retrieved": [
+        {
+          "id": "P-MIS-1",
+          "text": "Photosynthesis is the central biological process by which green plants release carbon dioxide into the atmosphere and absorb oxygen from the surrounding air. The process is driven by sunlight striking the chlorophyll molecules in the leaves, which then catalyze the inversion of atmospheric gases. The carbon dioxide produced by plants during photosynthesis is then taken up by animals during respiration, completing the gas cycle. Without photosynthesis, oxygen levels in the atmosphere would rapidly rise to dangerous concentrations, while carbon dioxide would become depleted, halting most metabolic processes.",
+          "score": 0.7405534386634827
+        },
+        {
+          "id": "base_0076",
+          "text": "as well as simple carbohydrate molecules (high in energy) that can then be converted into glucose, sucrose, or any of dozens of other sugar molecules. These sugar molecules contain energy and the energized carbon that all living things need to survive.\n\nAlthough the equation looks simple, the many steps that take place during photosynthesis are actually quite complex. Before learning the details of how photoautotrophs turn sunlight into food, it is important to become familiar with the structures involved.\n\nIn plants, photosynthesis generally takes place in leaves, which consist of several layers of cells. The process of photosynthesis occurs in a middle layer called the mesophyll . The gas exchange of carbon dioxide and oxygen occurs through small, regulated openings called stomata (sing",
+          "score": 0.7273866534233093
+        },
+        {
+          "id": "P-DIV-1c",
+          "text": "Plants carry out the Calvin cycle, the light-independent component of photosynthesis, to convert atmospheric carbon dioxide into three-carbon sugar molecules. The reactions consume ATP and NADPH produced by the light reactions and proceed through fixation, reduction, and regeneration of the five-carbon RuBP acceptor, all within the stroma of the chloroplast.",
+          "score": 0.7018840312957764
+        },
+        {
+          "id": "base_0079",
+          "text": "stack of thylakoids is called a granum , and the liquid-filled space surrounding the granum is called stroma or \u00e2\u0080\u009cbed\u00e2\u0080\u009d (not to be confused with stoma or \u00e2\u0080\u009cmouth,\u00e2\u0080\u009d an opening on the leaf epidermis).\n\nOn a hot, dry day, the guard cells of plants close their stomata to conserve water. What impact will this have on photosynthesis?\n\nPhotosynthesis takes place in two sequential stages: the light-dependent reactions and the light-independent reactions. In the light-dependent reactions , energy from sunlight is absorbed by chlorophyll and that energy is converted into stored chemical energy. In the light-independent reactions , the chemical energy harvested during the light-dependent reactions drives the assembly of sugar molecules from carbon dioxide. Therefore, although the light-independ",
+          "score": 0.6689412593841553
+        },
+        {
+          "id": "base_0077",
+          "text": "s in a middle layer called the mesophyll . The gas exchange of carbon dioxide and oxygen occurs through small, regulated openings called stomata (singular: stoma), which also play roles in the regulation of gas exchange and water balance. The stomata are typically located on the underside of the leaf, which helps to minimize water loss due to high temperatures on the upper surface of the leaf. Each stoma is flanked by guard cells that regulate the opening and closing of the stomata by swelling or shrinking in response to osmotic changes.\n\nIn all autotrophic eukaryotes, photosynthesis takes place inside an organelle called a chloroplast . For plants, chloroplast-containing cells exist mostly in the mesophyll. Chloroplasts have a double membrane envelope (composed of an outer membrane and an",
+          "score": 0.6674025058746338
+        }
+      ],
+      "audit": {
+        "query": "What gases do plants exchange during photosynthesis?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.2167,
+            "stdDev": 0.0657,
+            "variance": 0.0043,
+            "skewness": 0.5026,
+            "kurtosis": -1.1359,
+            "min": 0.1387,
+            "max": 0.3235,
+            "median": 0.1907,
+            "count": 5,
+            "histogram": [
+              0,
+              0,
+              4,
+              8,
+              0,
+              4,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              0,
+              0.6,
+              2.29,
+              4.966,
+              6.0263,
+              4.09634,
+              1.55957,
+              0.3325666,
+              0.03972073,
+              0.002657177,
+              9.95608e-05,
+              2.0894e-06,
+              2.4559e-08,
+              1.617e-10,
+              6e-13,
+              1e-15,
+              0,
+              0,
+              0,
+              0
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.3235,
+            0.2565,
+            0.1741,
+            0.1387,
+            0.1907
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.8256,
+          "scoreCalibrationR": 0.8822,
+          "diversity": 0.73374,
+          "redundancyRatio": 0.3717,
+          "bimodalSignal": 0.20000000000000007,
+          "similarityMatrix": [
+            [
+              1,
+              0.354,
+              0.3191,
+              0.1894,
+              0.1542
+            ],
+            [
+              0.354,
+              1,
+              0.2322,
+              0.3415,
+              0.3717
+            ],
+            [
+              0.3191,
+              0.2322,
+              1,
+              0.3541,
+              0.0996
+            ],
+            [
+              0.1894,
+              0.3415,
+              0.3541,
+              1,
+              0.2468
+            ],
+            [
+              0.1542,
+              0.3717,
+              0.0996,
+              0.2468,
+              1
+            ]
+          ]
+        },
+        "pathologies": [],
+        "health": 1,
+        "regime": "healthy"
+      },
+      "precision": {
+        "hits_at_k": 0,
+        "precision_at_k": 0.0,
+        "top1_violations": 2,
+        "any_violations": 0
+      },
+      "summary": {
+        "flags": [],
+        "health": 1,
+        "p_at_k": 0.0
+      }
+    },
+    {
+      "id": "Q5",
+      "query": "Compare photosynthesis to cellular respiration.",
+      "demonstration_category": "missed_by_design",
+      "associated_poison": "P-OFF-1",
+      "expected_behavior": "Auditor reports CLEAN. P-OFF-1 (cellular respiration explanation that does not actually compare the two processes) is retrieved at rank 2 in poisoned run. The auditor cannot detect that the chunk fails to fulfil the comparison aspect of the query \u2014 that requires query-intent grading, which is outside its scope.",
+      "retrieved": [
+        {
+          "id": "base_0009",
+          "text": "dioxide. Nutrients used in cellular respiration include carbohydrates, amino acids and fatty acids. These nutrients are oxidized to produce carbon dioxide and water, and to release chemical energy to drive the organism's metabolism .\n\nPhotosynthesis and cellular respiration are distinct processes, as they take place through different sequences of chemical reactions and in different cellular compartments (cellular respiration in mitochondria ). [ 18 ] [ 19 ]\n\nThe general equation for photosynthesis as first proposed by Cornelis van Niel is: [ 20 ]\n\nSince water is used as the electron donor in oxygenic photosynthesis, the equation for this process is:\n\nThis equation emphasizes that water is both a reactant in the light-dependent reaction and a product of the light-independent reaction , but",
+          "score": 0.7435172200202942
+        },
+        {
+          "id": "P-OFF-1",
+          "text": "Cellular respiration is the metabolic process by which cells convert glucose and oxygen into carbon dioxide, water, and ATP. It occurs in three stages: glycolysis in the cytoplasm, the citric acid cycle in the mitochondrial matrix, and the electron transport chain on the inner mitochondrial membrane. Each glucose molecule yields approximately thirty-eight molecules of ATP under aerobic conditions. Cellular respiration is the principal source of usable energy for nearly all eukaryotic cells, including those of plants, fungi, and animals, and it operates continuously regardless of whether the organism is exposed to light.",
+          "score": 0.7112663984298706
+        },
+        {
+          "id": "base_0008",
+          "text": "anoxygenic photosynthesis , used mostly by bacteria, which consume carbon dioxide but do not release oxygen or which produce elemental sulfur instead of molecular oxygen. [ 16 ] [ 17 ]\n\nCarbon dioxide is converted into sugars in a process called carbon fixation ; photosynthesis captures energy from sunlight to convert carbon dioxide into carbohydrates . Carbon fixation is an endothermic redox reaction. In general outline, photosynthesis is the opposite of cellular respiration : while photosynthesis is a process of reduction of carbon dioxide to carbohydrates, cellular respiration is the oxidation of carbohydrates or other nutrients to carbon dioxide. Nutrients used in cellular respiration include carbohydrates, amino acids and fatty acids. These nutrients are oxidized to produce carbon dio",
+          "score": 0.6833134293556213
+        },
+        {
+          "id": "base_0000",
+          "text": "Photosynthesis ( / \u02cc f o\u028a t \u0259 \u02c8 s \u026a n \u03b8 \u0259 s \u026a s / FOH -t\u0259- SINTH -\u0259-sis ) [ 1 ] is a system of biological processes by which photopigment -bearing autotrophic organisms , such as most plants , algae and cyanobacteria , convert light energy \u2014 typically from sunlight \u2014 into the chemical energy necessary to fuel their metabolism . The term photosynthesis usually refers to oxygenic photosynthesis , a process that releases oxygen as a byproduct of water splitting . Photosynthetic organisms store the converted chemical energy within the bonds of intracellular organic compounds (complex compounds containing carbon ), typically carbohydrates like sugars (mainly glucose , fructose and sucrose ), starches , phytoglycogen and cellulose . When needing to use this stored energy, an organism's cells the",
+          "score": 0.6643841862678528
+        },
+        {
+          "id": "base_0076",
+          "text": "as well as simple carbohydrate molecules (high in energy) that can then be converted into glucose, sucrose, or any of dozens of other sugar molecules. These sugar molecules contain energy and the energized carbon that all living things need to survive.\n\nAlthough the equation looks simple, the many steps that take place during photosynthesis are actually quite complex. Before learning the details of how photoautotrophs turn sunlight into food, it is important to become familiar with the structures involved.\n\nIn plants, photosynthesis generally takes place in leaves, which consist of several layers of cells. The process of photosynthesis occurs in a middle layer called the mesophyll . The gas exchange of carbon dioxide and oxygen occurs through small, regulated openings called stomata (sing",
+          "score": 0.6541000604629517
+        }
+      ],
+      "audit": {
+        "query": "Compare photosynthesis to cellular respiration.",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.2713,
+            "stdDev": 0.1223,
+            "variance": 0.015,
+            "skewness": 0.4722,
+            "kurtosis": -1.2832,
+            "min": 0.1464,
+            "max": 0.4663,
+            "median": 0.239,
+            "count": 5,
+            "histogram": [
+              0,
+              0,
+              4,
+              4,
+              4,
+              0,
+              0,
+              4,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              0,
+              0.9,
+              1.59,
+              2.392,
+              3.0364,
+              3.26049,
+              2.962217,
+              2.276999,
+              1.48088192,
+              0.814872499,
+              0.3793766004,
+              0.14943869572,
+              0.049804346361,
+              0.014043749341,
+              0.00335050709857,
+              0.000676316002891,
+              0.0001155049066573,
+              1.669025036979e-05,
+              2.040501498279e-06,
+              2.110681155905e-07
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.4663,
+            0.239,
+            0.3509,
+            0.1464,
+            0.1539
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.8296,
+          "scoreCalibrationR": 0.8355,
+          "diversity": 0.67859,
+          "redundancyRatio": 0.5498,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.3232,
+              0.5498,
+              0.2821,
+              0.2392
+            ],
+            [
+              0.3232,
+              1,
+              0.2936,
+              0.2566,
+              0.2575
+            ],
+            [
+              0.5498,
+              0.2936,
+              1,
+              0.2945,
+              0.3672
+            ],
+            [
+              0.2821,
+              0.2566,
+              0.2945,
+              1,
+              0.3504
+            ],
+            [
+              0.2392,
+              0.2575,
+              0.3672,
+              0.3504,
+              1
+            ]
+          ]
+        },
+        "pathologies": [],
+        "health": 1,
+        "regime": "healthy"
+      },
+      "precision": {
+        "hits_at_k": 1,
+        "precision_at_k": 0.2,
+        "top1_violations": 0,
+        "any_violations": 0
+      },
+      "summary": {
+        "flags": [],
+        "health": 1,
+        "p_at_k": 0.2
+      }
+    },
+    {
+      "id": "Q6",
+      "query": "What is the role of chlorophyll?",
+      "demonstration_category": "natural_pathology",
+      "associated_poison": "P-INV-1 (engineered but not retrieved)",
+      "expected_behavior": "RANK_INVERSION + SCORE_MISCALIBRATED fire in BOTH clean and poisoned runs from the BASE CORPUS alone \u2014 P-INV-1 (kitchen appliance with photosynthesis vocabulary) is correctly never retrieved. The pathology comes from the dense embedding's genuine ranking error on this query: rankQualityR = -0.435, scoreCalibrationR = -0.508. The auditor surfaces a real retrieval flaw with no poison needed. Bonus finding.",
+      "retrieved": [
+        {
+          "id": "base_0016",
+          "text": "in the interior tissues of a leaf, called the mesophyll , can contain between 450,000 and 800,000 chloroplasts for every square millimeter of leaf. The surface of the leaf is coated with a water-resistant waxy cuticle that protects the leaf from excessive evaporation of water and decreases the absorption of ultraviolet or blue light to minimize heating . The transparent epidermis layer allows light to pass through to the palisade mesophyll cells where most of the photosynthesis takes place.\n\nIn the light-dependent reactions , one molecule of the pigment chlorophyll absorbs one photon and loses one electron . This electron is taken up by a modified form of chlorophyll called pheophytin , which passes the electron to a quinone molecule, starting the flow of electrons down an electron transp",
+          "score": 0.6366115212440491
+        },
+        {
+          "id": "base_0017",
+          "text": "dified form of chlorophyll called pheophytin , which passes the electron to a quinone molecule, starting the flow of electrons down an electron transport chain that leads to the ultimate reduction of NADP to NADPH . In addition, this creates a proton gradient (energy gradient) across the chloroplast membrane , which is used by ATP synthase in the synthesis of ATP . The chlorophyll molecule ultimately regains the electron it lost when a water molecule is split in a process called photolysis , which releases oxygen .\n\nThe overall equation for the light-dependent reactions under the conditions of non-cyclic electron flow in green plants is: [ 30 ]\n\nNot all wavelengths of light can support photosynthesis. The photosynthetic action spectrum depends on the type of accessory pigments present. For",
+          "score": 0.6249933242797852
+        },
+        {
+          "id": "base_0078",
+          "text": "plants, chloroplast-containing cells exist mostly in the mesophyll. Chloroplasts have a double membrane envelope (composed of an outer membrane and an inner membrane), and are ancestrally derived from ancient free-living cyanobacteria. Within the chloroplast are stacked, disc-shaped structures called thylakoids . Embedded in the thylakoid membrane is chlorophyll, a pigment (molecule that absorbs light) responsible for the initial interaction between light and plant material, and numerous proteins that make up the electron transport chain. The thylakoid membrane encloses an internal space called the thylakoid lumen . As shown in Figure 8.6 , a stack of thylakoids is called a granum , and the liquid-filled space surrounding the granum is called stroma or \u00e2\u0080\u009cbed\u00e2\u0080\u009d (not to be confused with st",
+          "score": 0.6007463335990906
+        },
+        {
+          "id": "base_0096",
+          "text": "400 chlorophyll a and b molecules as well as other pigments like carotenoids. The absorption of a single photon or distinct quantity or \u00e2\u0080\u009cpacket\u00e2\u0080\u009d of light by any of the chlorophylls pushes that molecule into an excited state. In short, the light energy has now been captured by biological molecules but is not stored in any useful form yet. The energy is transferred from chlorophyll to chlorophyll until eventually (after about a millionth of a second), it is delivered to the reaction center. Up to this point, only energy has been transferred between molecules, not electrons.\n\nWhat is the initial source of electrons for the chloroplast electron transport chain?\n\nThe reaction center contains a pair of chlorophyll a molecules with a special property. Those two chlorophylls can undergo oxidat",
+          "score": 0.5831788778305054
+        },
+        {
+          "id": "base_0014",
+          "text": "thylakoid membrane, and within the enclosed volume is a lumen or thylakoid space. Embedded in the thylakoid membrane are integral and peripheral membrane protein complexes of the photosynthetic system.\n\nPlants absorb light primarily using the pigment chlorophyll . The green part of the light spectrum is not absorbed but is reflected, which is the reason that most plants have a green color. Besides chlorophyll, plants also use pigments such as carotenes and xanthophylls . [ 28 ] Algae also use chlorophyll, but various other pigments are present, such as phycocyanin , carotenes , and xanthophylls in green algae , phycoerythrin in red algae (rhodophytes) and fucoxanthin in brown algae and diatoms resulting in a wide variety of colors.\n\nThese pigments are embedded in plants and algae in compl",
+          "score": 0.580183744430542
+        }
+      ],
+      "audit": {
+        "query": "What is the role of chlorophyll?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.1754,
+            "stdDev": 0.1056,
+            "variance": 0.0112,
+            "skewness": 1.0422,
+            "kurtosis": -0.2417,
+            "min": 0.0613,
+            "max": 0.3735,
+            "median": 0.1361,
+            "count": 5,
+            "histogram": [
+              0,
+              4,
+              8,
+              4,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              1,
+              2.4,
+              3.37,
+              3.778,
+              3.384,
+              2.42232,
+              1.385662,
+              0.633449,
+              0.2314162,
+              0.067562183,
+              0.0157630922,
+              0.00293905003,
+              0.000437925635,
+              5.21460701e-05,
+              4.9621584e-06,
+              3.77352724e-07,
+              2.29325411e-08,
+              1.11374225e-09,
+              4.3225999e-11,
+              1.3407049e-12
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.1313,
+            0.1361,
+            0.0613,
+            0.3735,
+            0.175
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": -0.435,
+          "scoreCalibrationR": -0.5079,
+          "diversity": 0.7043200000000001,
+          "redundancyRatio": 0.4914,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.4914,
+              0.2254,
+              0.4006,
+              0.1225
+            ],
+            [
+              0.4914,
+              1,
+              0.267,
+              0.4575,
+              0.1984
+            ],
+            [
+              0.2254,
+              0.267,
+              1,
+              0.1832,
+              0.422
+            ],
+            [
+              0.4006,
+              0.4575,
+              0.1832,
+              1,
+              0.1888
+            ],
+            [
+              0.1225,
+              0.1984,
+              0.422,
+              0.1888,
+              1
+            ]
+          ]
+        },
+        "pathologies": [
+          {
+            "kind": "RANK_INVERSION",
+            "severity": 0.33529411764705885,
+            "description": "top-ranked chunks are less aligned than lower-ranked ones \u2014 retriever scoring is broken"
+          },
+          {
+            "kind": "SCORE_MISCALIBRATED",
+            "severity": 0.60632,
+            "description": "retriever-reported scores do not match independent alignment \u2014 scoring function drift"
+          }
+        ],
+        "health": 0.6989730769230769,
+        "regime": "drift"
+      },
+      "precision": {
+        "hits_at_k": 5,
+        "precision_at_k": 1.0,
+        "top1_violations": 0,
+        "any_violations": 0
+      },
+      "summary": {
+        "flags": [
+          "RANK_INVERSION",
+          "SCORE_MISCALIBRATED"
+        ],
+        "health": 0.6989730769230769,
+        "p_at_k": 1.0
+      }
+    },
+    {
+      "id": "Q7",
+      "query": "How does light wavelength affect photosynthesis?",
+      "demonstration_category": "clean_baseline",
+      "associated_poison": null,
+      "expected_behavior": "No flag fires in either run. Validates that the auditor is not flagging legitimate retrievals.",
+      "retrieved": [
+        {
+          "id": "base_0018",
+          "text": "]\n\nNot all wavelengths of light can support photosynthesis. The photosynthetic action spectrum depends on the type of accessory pigments present. For example, in green plants , the action spectrum resembles the absorption spectrum for chlorophylls and carotenoids with absorption peaks in violet-blue and red light. In red algae , the action spectrum is blue-green light, which allows these algae to use the blue end of the spectrum to grow in the deeper waters that filter out the longer wavelengths (red light) used by above-ground green plants. The non-absorbed part of the light spectrum is what gives photosynthetic organisms their color (e.g., green plants, red algae, purple bacteria ) and is the least effective for photosynthesis in the respective organisms .\n\nIn plants , light-dependent r",
+          "score": 0.6790123581886292
+        },
+        {
+          "id": "base_0092",
+          "text": "range wavelengths.\n\nMany photosynthetic organisms have a mixture of pigments, and by using these pigments, the organism can absorb energy from a wider range of wavelengths. Not all photosynthetic organisms have full access to sunlight. Some organisms grow underwater where light intensity and quality decrease and change with depth. Other organisms grow in competition for light. Plants on the rainforest floor must be able to absorb any bit of light that comes through, because the taller trees absorb most of the sunlight and scatter the remaining solar radiation ( Figure 8.15 ).\n\nWhen studying a photosynthetic organism, scientists can determine the types of pigments present by generating absorption spectra. An instrument called a spectrophotometer can differentiate which wavelengths of light",
+          "score": 0.6460505723953247
+        },
+        {
+          "id": "base_0017",
+          "text": "dified form of chlorophyll called pheophytin , which passes the electron to a quinone molecule, starting the flow of electrons down an electron transport chain that leads to the ultimate reduction of NADP to NADPH . In addition, this creates a proton gradient (energy gradient) across the chloroplast membrane , which is used by ATP synthase in the synthesis of ATP . The chlorophyll molecule ultimately regains the electron it lost when a water molecule is split in a process called photolysis , which releases oxygen .\n\nThe overall equation for the light-dependent reactions under the conditions of non-cyclic electron flow in green plants is: [ 30 ]\n\nNot all wavelengths of light can support photosynthesis. The photosynthetic action spectrum depends on the type of accessory pigments present. For",
+          "score": 0.6424145698547363
+        },
+        {
+          "id": "base_0079",
+          "text": "stack of thylakoids is called a granum , and the liquid-filled space surrounding the granum is called stroma or \u00e2\u0080\u009cbed\u00e2\u0080\u009d (not to be confused with stoma or \u00e2\u0080\u009cmouth,\u00e2\u0080\u009d an opening on the leaf epidermis).\n\nOn a hot, dry day, the guard cells of plants close their stomata to conserve water. What impact will this have on photosynthesis?\n\nPhotosynthesis takes place in two sequential stages: the light-dependent reactions and the light-independent reactions. In the light-dependent reactions , energy from sunlight is absorbed by chlorophyll and that energy is converted into stored chemical energy. In the light-independent reactions , the chemical energy harvested during the light-dependent reactions drives the assembly of sugar molecules from carbon dioxide. Therefore, although the light-independ",
+          "score": 0.6297723650932312
+        },
+        {
+          "id": "base_0019",
+          "text": "green plants, red algae, purple bacteria ) and is the least effective for photosynthesis in the respective organisms .\n\nIn plants , light-dependent reactions occur in the thylakoid membranes of the chloroplasts where they drive the synthesis of ATP and NADPH . The light-dependent reactions are of two forms: cyclic and non-cyclic .\n\nIn the non-cyclic reaction, the photons are captured in the light-harvesting antenna complexes of photosystem II by chlorophyll and other accessory pigments (see diagram \"Z-scheme\"). The absorption of a photon by the antenna complex loosens an electron by a process called photoinduced charge separation . The antenna system is at the core of the chlorophyll molecule of the photosystem II reaction center. That loosened electron is taken up by the primary electron",
+          "score": 0.6285771727561951
+        }
+      ],
+      "audit": {
+        "query": "How does light wavelength affect photosynthesis?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.1856,
+            "stdDev": 0.116,
+            "variance": 0.0135,
+            "skewness": 0.2561,
+            "kurtosis": -1.6303,
+            "min": 0.0481,
+            "max": 0.3451,
+            "median": 0.1443,
+            "count": 5,
+            "histogram": [
+              4,
+              4,
+              4,
+              0,
+              0,
+              4,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              1,
+              2.2,
+              3,
+              3.424,
+              3.2451,
+              2.55476,
+              1.670491,
+              0.9072173,
+              0.40921538,
+              0.153308381,
+              0.0477038227,
+              0.01232860114,
+              0.002646352901,
+              0.0004717968648,
+              6.986114164e-05,
+              8.591908474e-06,
+              8.776410765e-07,
+              7.44590647e-08,
+              5.246764212e-09,
+              3.07071036e-10
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.3451,
+            0.2979,
+            0.1443,
+            0.0925,
+            0.0481
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.9742,
+          "scoreCalibrationR": 0.8805,
+          "diversity": 0.76703,
+          "redundancyRatio": 0.4259,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.3721,
+              0.2731,
+              0.0922,
+              0.2583
+            ],
+            [
+              0.3721,
+              1,
+              0.1556,
+              0.0944,
+              0.1065
+            ],
+            [
+              0.2731,
+              0.1556,
+              1,
+              0.2224,
+              0.4259
+            ],
+            [
+              0.0922,
+              0.0944,
+              0.2224,
+              1,
+              0.3292
+            ],
+            [
+              0.2583,
+              0.1065,
+              0.4259,
+              0.3292,
+              1
+            ]
+          ]
+        },
+        "pathologies": [],
+        "health": 0.9279999999999999,
+        "regime": "healthy"
+      },
+      "precision": {
+        "hits_at_k": 3,
+        "precision_at_k": 0.6,
+        "top1_violations": 0,
+        "any_violations": 0
+      },
+      "summary": {
+        "flags": [],
+        "health": 0.9279999999999999,
+        "p_at_k": 0.6
+      }
+    },
+    {
+      "id": "Q8",
+      "query": "Describe the light-dependent reactions.",
+      "demonstration_category": "caught_by_auditor",
+      "associated_poison": "P-DIV-2 cluster (a, b, c)",
+      "expected_behavior": "REDUNDANT fires in poisoned run only. Three near-duplicate paraphrases of the light-reaction definition fill ranks 2, 4, 5 in poisoned run (verified empirically), driving redundancyRatio above the 0.75 threshold.",
+      "retrieved": [
+        {
+          "id": "base_0080",
+          "text": "ergy harvested during the light-dependent reactions drives the assembly of sugar molecules from carbon dioxide. Therefore, although the light-independent reactions do not use light as a reactant, they require the products of the light-dependent reactions to function. In addition, however, several enzymes of the light-independent reactions are activated by light. The light-dependent reactions utilize certain molecules to temporarily store the energy: These are referred to as energy carriers . The energy carriers that move energy from light-dependent reactions to light-independent reactions can be thought of as \u00e2\u0080\u009cfull\u00e2\u0080\u009d because they are rich in energy. After the energy is released, the \u00e2\u0080\u009cempty\u00e2\u0080\u009d energy carriers return to the light-dependent reaction to obtain more energy. Figure 8.7 illu",
+          "score": 0.7084243297576904
+        },
+        {
+          "id": "P-DIV-2c",
+          "text": "Within the thylakoid membranes of the chloroplast, the light-dependent reactions begin when photosystems II and I capture photons. Excited electrons move down an electron transport chain, driving the pumping of protons into the thylakoid lumen, which builds a gradient that powers ATP synthesis and reduces NADP+ to NADPH.",
+          "score": 0.6879306435585022
+        },
+        {
+          "id": "base_0010",
+          "text": "ess is:\n\nThis equation emphasizes that water is both a reactant in the light-dependent reaction and a product of the light-independent reaction , but canceling n water molecules from each side gives the net equation:\n\nOther processes substitute other compounds (such as arsenite ) for water in the electron-supply role; for example some microbes use sunlight to oxidize arsenite to arsenate : [ 21 ] The equation for this reaction is:\n\nPhotosynthesis occurs in two stages. In the first stage, light-dependent reactions or light reactions capture the energy of light and use it to make the hydrogen carrier NADPH and the energy-storage molecule ATP . During the second stage, the light-independent reactions use these products to capture and reduce carbon dioxide.\n\nMost organisms that use oxygenic ph",
+          "score": 0.6788454651832581
+        },
+        {
+          "id": "P-DIV-2b",
+          "text": "In the light-dependent reactions, photons are absorbed by photosystems II and I located in the thylakoid membranes. The absorbed energy excites electrons that travel through an electron transport chain, pumping protons into the thylakoid lumen. The resulting proton gradient powers ATP synthase, and NADP+ is reduced to NADPH at the chain's terminus.",
+          "score": 0.6748181581497192
+        },
+        {
+          "id": "P-DIV-2a",
+          "text": "The light-dependent reactions of photosynthesis occur in the thylakoid membranes of the chloroplast. Photosystems II and I capture photons, exciting electrons that are passed through an electron transport chain. The energy from this electron flow is used to pump protons into the thylakoid lumen, generating a gradient that drives ATP synthesis, while NADP+ is reduced to NADPH at the end of the chain.",
+          "score": 0.6401475667953491
+        }
+      ],
+      "audit": {
+        "query": "Describe the light-dependent reactions.",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.2974,
+            "stdDev": 0.1408,
+            "variance": 0.0198,
+            "skewness": 0.5526,
+            "kurtosis": -1.5037,
+            "min": 0.1761,
+            "max": 0.5155,
+            "median": 0.198,
+            "count": 5,
+            "histogram": [
+              0,
+              0,
+              0,
+              12,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              0,
+              0.8,
+              1.34,
+              1.942,
+              2.4825,
+              2.79776,
+              2.779476,
+              2.4341552,
+              1.87917253,
+              1.278845817,
+              0.7671898625,
+              0.40571462207,
+              0.189134868112,
+              0.0777240957449,
+              0.02815612544979,
+              0.008991315587108,
+              0.0025310849839535,
+              0.00062809212699773,
+              0.00013739568963026,
+              2.64945167892023e-05
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.5155,
+            0.198,
+            0.4148,
+            0.1826,
+            0.1761
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.6973,
+          "scoreCalibrationR": 0.6844,
+          "diversity": 0.5940000000000001,
+          "redundancyRatio": 0.8369,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.1767,
+              0.5428,
+              0.228,
+              0.2304
+            ],
+            [
+              0.1767,
+              1,
+              0.2002,
+              0.7321,
+              0.8369
+            ],
+            [
+              0.5428,
+              0.2002,
+              1,
+              0.1704,
+              0.2191
+            ],
+            [
+              0.228,
+              0.7321,
+              0.1704,
+              1,
+              0.7234
+            ],
+            [
+              0.2304,
+              0.8369,
+              0.2191,
+              0.7234,
+              1
+            ]
+          ]
+        },
+        "pathologies": [
+          {
+            "kind": "REDUNDANT",
+            "severity": 0.5922499999999999,
+            "description": "top-K chunks are near-duplicates \u2014 retriever returned the same fact multiple times"
+          }
+        ],
+        "health": 1,
+        "regime": "healthy"
+      },
+      "precision": {
+        "hits_at_k": 4,
+        "precision_at_k": 0.8,
+        "top1_violations": 0,
+        "any_violations": 0
+      },
+      "summary": {
+        "flags": [
+          "REDUNDANT"
+        ],
+        "health": 1,
+        "p_at_k": 0.8
+      }
+    },
+    {
+      "id": "Q9",
+      "query": "What are C4 and CAM photosynthesis pathways?",
+      "demonstration_category": "clean_baseline",
+      "associated_poison": null,
+      "expected_behavior": "No flag fires in either run. Niche-enough query that the retriever lands on legitimate corpus chunks. Second control.",
+      "retrieved": [
+        {
+          "id": "base_0033",
+          "text": "dase enzyme, and the produced CO 2 can support the Calvin cycle reactions. Reactive hydrogen peroxide (H 2 O 2 ), the byproduct of oxalate oxidase reaction, can be neutralized by catalase . Alarm photosynthesis represents a photosynthetic variant to be added to the well-known C4 and CAM pathways. However, alarm photosynthesis, in contrast to these pathways, operates as a biochemical pump that collects carbon from the organ interior (or from the soil ) and not from the atmosphere. [ 37 ] [ 38 ]\n\nCyanobacteria possess carboxysomes , which increase the concentration of CO 2 around RuBisCO to increase the rate of photosynthesis. An enzyme, carbonic anhydrase , located within the carboxysome, releases CO 2 from dissolved hydrocarbonate ions (HCO \u2212 3 ). Before the CO 2 can diffuse out, RuBisCO c",
+          "score": 0.6963902711868286
+        },
+        {
+          "id": "base_0067",
+          "text": ", both the C3 and C4 plants had similar leaf photosynthetic rates around 60 \u03bcmol CO 2 \u00b7m \u22122 \u00b7s \u22121 indicating the suppression of photorespiration in C3 plants. [ 107 ]\n\nThere are four main factors influencing photosynthesis and several corollary factors. The four main are: [ 113 ]\n\nTotal photosynthesis is limited by a range of environmental factors. These include the amount of light available, the amount of leaf area a plant has to capture light (shading by other plants is a major limitation of photosynthesis), the rate at which carbon dioxide can be supplied to the chloroplasts to support photosynthesis, the availability of water, and the availability of suitable temperatures for carrying out photosynthesis. [ 114 ]\n\nThe process of photosynthesis provides the main input of free energy into",
+          "score": 0.6712576150894165
+        },
+        {
+          "id": "P-DIV-1c",
+          "text": "Plants carry out the Calvin cycle, the light-independent component of photosynthesis, to convert atmospheric carbon dioxide into three-carbon sugar molecules. The reactions consume ATP and NADPH produced by the light reactions and proceed through fixation, reduction, and regeneration of the five-carbon RuBP acceptor, all within the stroma of the chloroplast.",
+          "score": 0.6587381958961487
+        },
+        {
+          "id": "base_0028",
+          "text": "uced by the light reactions of photosynthesis, will increase, causing an increase of photorespiration by the oxygenase activity of ribulose-1,5-bisphosphate carboxylase/oxygenase (RuBisCO) and decrease in carbon fixation. Some plants have evolved mechanisms to increase the CO 2 concentration in the leaves under these conditions. [ 32 ]\n\nPlants that use the C 4 carbon fixation process chemically fix carbon dioxide in the cells of the mesophyll by adding it to the three-carbon molecule phosphoenolpyruvate (PEP), a reaction catalyzed by an enzyme called PEP carboxylase , creating the four-carbon organic acid oxaloacetic acid . Oxaloacetic acid or malate synthesized by this process is then translocated to specialized bundle sheath cells where the enzyme RuBisCO and other Calvin cycle enzymes a",
+          "score": 0.6417418718338013
+        },
+        {
+          "id": "base_0031",
+          "text": "useful carbon-concentrating mechanism in its own right. [ 35 ]\n\nXerophytes , such as cacti and most succulents , also use PEP carboxylase to capture carbon dioxide in a process called Crassulacean acid metabolism (CAM). In contrast to C 4 metabolism, which spatially separates the CO 2 fixation to PEP from the Calvin cycle, CAM temporally separates these two processes. CAM plants have a different leaf anatomy from C 3 plants, and fix the CO 2 at night, when their stomata are open. CAM plants store the CO 2 mostly in the form of malic acid via carboxylation of phosphoenolpyruvate to oxaloacetate , which is then reduced to malate. Decarboxylation of malate during the day releases CO 2 inside the leaves, thus allowing carbon fixation to 3-phosphoglycerate by RuBisCO. CAM is used by 16,000 spec",
+          "score": 0.6382772922515869
+        }
+      ],
+      "audit": {
+        "query": "What are C4 and CAM photosynthesis pathways?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0.1985,
+            "stdDev": 0.1148,
+            "variance": 0.0132,
+            "skewness": -0.1216,
+            "kurtosis": -1.6034,
+            "min": 0.047,
+            "max": 0.3449,
+            "median": 0.2227,
+            "count": 5,
+            "histogram": [
+              4,
+              4,
+              0,
+              0,
+              4,
+              4,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              1,
+              1.9,
+              2.83,
+              3.403,
+              3.3833,
+              2.78244,
+              1.892967,
+              1.0653397,
+              0.49597579,
+              0.191011798,
+              0.0608537379,
+              0.01603768524,
+              0.00349641898,
+              0.000630568991,
+              9.407389127e-05,
+              1.1610019915e-05,
+              1.1852887939e-06,
+              1.0010199889e-07,
+              6.993404984e-09,
+              4.041680372e-10
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0.3449,
+            0.2907,
+            0.087,
+            0.047,
+            0.2227
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0.6012,
+          "scoreCalibrationR": 0.7184,
+          "diversity": 0.74248,
+          "redundancyRatio": 0.419,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.2455,
+              0.2401,
+              0.3522,
+              0.2721
+            ],
+            [
+              0.2455,
+              1,
+              0.2313,
+              0.1875,
+              0.1776
+            ],
+            [
+              0.2401,
+              0.2313,
+              1,
+              0.2948,
+              0.1551
+            ],
+            [
+              0.3522,
+              0.1875,
+              0.2948,
+              1,
+              0.419
+            ],
+            [
+              0.2721,
+              0.1776,
+              0.1551,
+              0.419,
+              1
+            ]
+          ]
+        },
+        "pathologies": [],
+        "health": 0.9925,
+        "regime": "healthy"
+      },
+      "precision": {
+        "hits_at_k": 4,
+        "precision_at_k": 0.8,
+        "top1_violations": 0,
+        "any_violations": 0
+      },
+      "summary": {
+        "flags": [],
+        "health": 0.9925,
+        "p_at_k": 0.8
+      }
+    },
+    {
+      "id": "Q10",
+      "query": "What is the Pythagorean theorem?",
+      "demonstration_category": "ood_probe",
+      "associated_poison": null,
+      "expected_behavior": "OFF_TOPIC must fire in both clean and poisoned runs. The corpus is biology only; this query is geometry. If OFF_TOPIC does not fire here, the dense profile's offTopic threshold (0.10) is too lenient even for a true OOD probe \u2014 the auditor cannot distinguish OOD from in-domain on dense retrieval over a domain-rich corpus, which is itself a finding worth publishing.",
+      "retrieved": [
+        {
+          "id": "P-MIS-2",
+          "text": "The overall chemical equation of photosynthesis is conventionally written as 2 H2O + 12 CO2 -> C6H12O6 + 4 O2. The two water molecules contribute the protons used to reduce the twelve carbon-dioxide molecules into a single glucose unit, while four oxygen molecules are released as a byproduct of the light-dependent reactions. This stoichiometry, first described in nineteenth-century plant physiology textbooks, remains the standard reference equation in modern biology curricula. Students should commit the 2:12:1:4 ratio to memory, as it appears on most introductory examinations.",
+          "score": 0.2371543049812317
+        },
+        {
+          "id": "base_0063",
+          "text": "am and a score of students and researchers utilizing the carbon-14 isotope and paper chromatography techniques. [ 102 ] The pathway of CO 2 fixation by the algae Chlorella in a fraction of a second in light resulted in a three carbon molecule called phosphoglyceric acid (PGA). For that original and ground-breaking work, a Nobel Prize in Chemistry was awarded to Melvin Calvin in 1961. In parallel, plant physiologists studied leaf gas exchanges using the new method of infrared gas analysis and a leaf chamber where the net photosynthetic rates ranged from 10 to 13 \u03bcmol CO 2 \u00b7m \u22122 \u00b7s \u22121 , with the conclusion that all terrestrial plants have the same photosynthetic capacities, that are light saturated at less than 50% of sunlight. [ 103 ] [ 104 ]\n\nLater in 1958\u20131963 at Cornell University , fiel",
+          "score": 0.22414416074752808
+        },
+        {
+          "id": "base_0055",
+          "text": "ed jar and burned a candle in it (which gave off CO 2 ), the candle would burn out very quickly, much before it ran out of wax . He further discovered that a mouse could similarly \"injure\" air. He then showed that a plant could restore the air the candle and the mouse had \"injured\". [ 90 ]\n\nIn 1779, Jan Ingenhousz repeated Priestley's experiments . He discovered that it was the influence of sunlight on the plant that could cause it to revive a mouse in a matter of hours. [ 90 ] [ 91 ]\n\nIn 1796, Jean Senebier , a Swiss pastor , botanist , and naturalist , demonstrated that green plants consume carbon dioxide and release oxygen under the influence of light . Soon afterward, Nicolas-Th\u00e9odore de Saussure showed that the increase in mass of the plant as it grows could not be due only to uptake",
+          "score": 0.19982761144638062
+        },
+        {
+          "id": "base_0054",
+          "text": "y when he carefully measured the mass of the soil a plant was using and the mass of the plant as it grew. After noticing that the soil mass changed very little, he hypothesized that the mass of the growing plant must come from the water , the only substance he added to the potted plant. His hypothesis was partially accurate \u2013 much of the gained mass comes from carbon dioxide as well as water. However, this was a signaling point to the idea that the bulk of a plant's biomass comes from the inputs of photosynthesis, not the soil itself.\n\nJoseph Priestley , a chemist and minister , discovered that when he isolated a volume of air under an inverted jar and burned a candle in it (which gave off CO 2 ), the candle would burn out very quickly, much before it ran out of wax . He further discovered",
+          "score": 0.19105666875839233
+        },
+        {
+          "id": "base_0065",
+          "text": "in leaf anatomy are crucial factors in differentiating photosynthetic capacities among species. [ 107 ] In tropical grasses, including maize, sorghum, sugarcane, Bermuda grass and in the dicot amaranthus, leaf photosynthetic rates were around 38\u221240 \u03bcmol CO 2 \u00b7m \u22122 \u00b7s \u22121 , and the leaves have two types of green cells, i.e. outer layer of mesophyll cells surrounding a tightly packed cholorophyllous vascular bundle sheath cells. This type of anatomy was termed Kranz anatomy in the 19th century by the botanist Gottlieb Haberlandt while studying leaf anatomy of sugarcane. [ 108 ] Plant species with the greatest photosynthetic rates and Kranz anatomy showed no apparent photorespiration, very low CO 2 compensation point, high optimum temperature, high stomatal resistances and lower mesophyll res",
+          "score": 0.17417222261428833
+        }
+      ],
+      "audit": {
+        "query": "What is the Pythagorean theorem?",
+        "retrievedCount": 5,
+        "domain": {
+          "stats": {
+            "mean": 0,
+            "stdDev": 0,
+            "variance": 0,
+            "skewness": 0,
+            "kurtosis": -3,
+            "min": 0,
+            "max": 0,
+            "median": 0,
+            "count": 5,
+            "histogram": [
+              20,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "gaussianFit": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "binEdges": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95
+            ]
+          },
+          "scores": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "retrieval": {
+          "rankQualityR": 0,
+          "scoreCalibrationR": 0,
+          "diversity": 0.8709899999999999,
+          "redundancyRatio": 0.424,
+          "bimodalSignal": 0,
+          "similarityMatrix": [
+            [
+              1,
+              0.084,
+              0.0742,
+              0.087,
+              0.0112
+            ],
+            [
+              0.084,
+              1,
+              0.1454,
+              0.1148,
+              0.2163
+            ],
+            [
+              0.0742,
+              0.1454,
+              1,
+              0.424,
+              0.0831
+            ],
+            [
+              0.087,
+              0.1148,
+              0.424,
+              1,
+              0.0501
+            ],
+            [
+              0.0112,
+              0.2163,
+              0.0831,
+              0.0501,
+              1
+            ]
+          ]
+        },
+        "pathologies": [
+          {
+            "kind": "OUT_OF_DISTRIBUTION",
+            "severity": 1,
+            "description": "no chunk aligns well with the query \u2014 likely out-of-corpus query"
+          },
+          {
+            "kind": "SCORE_MISCALIBRATED",
+            "severity": 0.2,
+            "description": "retriever-reported scores do not match independent alignment \u2014 scoring function drift"
+          }
+        ],
+        "health": 0,
+        "regime": "rot"
+      },
+      "precision": {
+        "hits_at_k": 0,
+        "precision_at_k": 0.0,
+        "top1_violations": 0,
+        "any_violations": 0
+      },
+      "summary": {
+        "flags": [
+          "OUT_OF_DISTRIBUTION",
+          "SCORE_MISCALIBRATED"
+        ],
+        "health": 0,
+        "p_at_k": 0.0
+      }
+    }
+  ]
+}
